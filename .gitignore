@@ -9,7 +9,6 @@ output/
 *.hex
 *.exe
 *.log
-*.pdf
 *.png
 *.lcov
 *.profraw
