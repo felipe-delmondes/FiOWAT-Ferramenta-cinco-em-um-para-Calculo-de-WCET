@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ipet package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="interface_target package" href="interface_target.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ipet package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-ipet.hybrid_ipet_facade">ipet.hybrid_ipet_facade module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ipet.hybrid_ipet_facade.HybridIpetFacade"><code class="docutils literal notranslate"><span class="pre">HybridIpetFacade</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ipet.hybrid_ipet_facade.maketrans"><code class="docutils literal notranslate"><span class="pre">maketrans()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ipet.ipet">ipet.ipet module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ipet.ipet.Ipet"><code class="docutils literal notranslate"><span class="pre">Ipet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ipet.ipet.maketrans"><code class="docutils literal notranslate"><span class="pre">maketrans()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ipet.static_ipet_facade">ipet.static_ipet_facade module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ipet.static_ipet_facade.StaticIpetFacade"><code class="docutils literal notranslate"><span class="pre">StaticIpetFacade</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ipet.static_ipet_facade.maketrans"><code class="docutils literal notranslate"><span class="pre">maketrans()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">ipet package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/ipet.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ipet-package">
+<h1>ipet package<a class="headerlink" href="#ipet-package" title="Link to this heading">¶</a></h1>
+<section id="module-ipet.hybrid_ipet_facade">
+<span id="ipet-hybrid-ipet-facade-module"></span><h2>ipet.hybrid_ipet_facade module<a class="headerlink" href="#module-ipet.hybrid_ipet_facade" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipet.hybrid_ipet_facade.HybridIpetFacade">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ipet.hybrid_ipet_facade.</span></span><span class="sig-name descname"><span class="pre">HybridIpetFacade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.wcet_data.WcetData" title="utils.wcet_data.WcetData"><span class="pre">WcetData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipet.hybrid_ipet_facade.HybridIpetFacade" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for estimating the Worst-Case Execution Time (WCET) of a program.</p>
+<p>This class encapsulates the logic for calculating WCET using the IPET with measurements of basic blocks.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about wcet</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipet.hybrid_ipet_facade.HybridIpetFacade.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ipet.hybrid_ipet_facade.HybridIpetFacade.run" title="Link to this definition">¶</a></dt>
+<dd><p>Hybrid IPET pipeline for calculate WCET.</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ipet.hybrid_ipet_facade.maketrans">
+<span class="sig-prename descclassname"><span class="pre">ipet.hybrid_ipet_facade.</span></span><span class="sig-name descname"><span class="pre">maketrans</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipet.hybrid_ipet_facade.maketrans" title="Link to this definition">¶</a></dt>
+<dd><p>Return a translation table usable for str.translate().</p>
+<p>If there is only one argument, it must be a dictionary mapping Unicode
+ordinals (integers) or characters to Unicode ordinals, strings or None.
+Character keys will be then converted to ordinals.
+If there are two arguments, they must be strings of equal length, and
+in the resulting dictionary, each character in x will be mapped to the
+character at the same position in y. If there is a third argument, it
+must be a string, whose characters will be mapped to None in the result.</p>
+</dd></dl>
+
+</section>
+<section id="module-ipet.ipet">
+<span id="ipet-ipet-module"></span><h2>ipet.ipet module<a class="headerlink" href="#module-ipet.ipet" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipet.ipet.Ipet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ipet.ipet.</span></span><span class="sig-name descname"><span class="pre">Ipet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipet.ipet.Ipet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Estimate the Static WCET using IPET technique (Implicit Path Enumeration Technique);
+Or/And estimate the worst path using IPET technique.</p>
+<p>The variation depends of run method: &lt;run_ipet_static | run_ipet_hybrid | run_ipet_constraint_solver&gt;</p>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>graph<span class="classifier">dict</span></dt><dd><p>Graph of all program</p>
+</dd>
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project, for example triple target</p>
+</dd>
+<dt>intermediate_values<span class="classifier">IntermediateValues, default = None</span></dt><dd><p>All intermediate information obtained by pre processing.</p>
+<p>By default, calculate WCET, but if there is intermediate_values, so its object register all worst path.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Attributes<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>graph<span class="classifier">dict</span></dt><dd><p>Relationship between function name and list of basic blocks.
+It’s implicit the function names are inserted in post order.</p>
+</dd>
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project, for example triple target</p>
+</dd>
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing. It’s used in this context to store worst path</p>
+</dd>
+<dt>instruction_weight<span class="classifier">dict</span></dt><dd><p>IR instrucion weight in cycles. Example: ‘alloca’ = 10</p>
+</dd>
+<dt>connections_in<span class="classifier">list</span></dt><dd><p>Edges enter in basic block.</p>
+<p>Example: [[‘start_0’], [], [], [], [], [], [], [], [], [], []]</p>
+</dd>
+<dt>connections_out<span class="classifier">list</span></dt><dd><p>Edges out of basic block.</p>
+<p>Example: [[], [], [], []]</p>
+</dd>
+<dt>mapping_edges_and_leave_blocks<span class="classifier">dict</span></dt><dd><p>Relationship between edges and weight.</p>
+<p>Example: {‘start_0’: 0}</p>
+</dd>
+<dt>function<span class="classifier">str</span></dt><dd><p>Function name of current function under analysis</p>
+</dd>
+<dt>edges<span class="classifier">dict</span></dt><dd><p>Current functions edge. The relationship between its names and calculated weights.</p>
+<p>Example: {‘start_0’: 1374.0, ‘0_1’: 67, ‘1_4’: 21044.0, ‘5_6’: 747.0}</p>
+</dd>
+<dt>model<span class="classifier">LpSolver</span></dt><dd><p>Pulp model, contain all constraints all objective function</p>
+</dd>
+<dt>objective<span class="classifier">list</span></dt><dd><p>Tuple with LpVariable and its respective edge.
+This format is need to LpAffineExpression() function convert to objective function format.</p>
+</dd>
+<dt>variables<span class="classifier">LpVariable</span></dt><dd><p>LpVariable object, with name, weight</p>
+</dd>
+<dt>status<span class="classifier">LpStatus</span></dt><dd><p>LpStatus constant, this register the result of solver.
+Some examples are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>LpStatusOptimal : It’s means the optimization was reached.</p></li>
+<li><p>LpStatusInfeasible : Some problem with model prevent the optimization, for example, if the linear system has two mutually exclusive constraints. Example: “x &gt; 5” and “x == 1”.</p></li>
+<li><p>LpStatusUnbounded : Some variable hasn’t constraint, so the optimal value diverge to infinite. Example: just “x &gt; 0” -&gt; the value of x for maximize the objective function is infinite.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipet.ipet.Ipet.run_ipet_constraint_solver">
+<span class="sig-name descname"><span class="pre">run_ipet_constraint_solver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#ipet.ipet.Ipet.run_ipet_constraint_solver" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Static WCET of function target, calculating the WCET of every function transverse the graph in post order.</p>
+<p>For this method, use measured weight (The CPI’s sum of measured weight and WCET of all “call function” inside of basic block)</p>
+<p>Also, the worst path for each optimized function is stored in intermediate_values object.</p>
+<p>Update this attributes of intermediate values:</p>
+<ul>
+<li><dl>
+<dt>worst_path_basic_block<span class="classifier">dict</span></dt><dd><p>The worst path calculated (Execution number for each basic block).</p>
+<p>Example: {‘scanf’: [(149, 1)], ‘fatorial’: [(166, 1), (179, 1), (188, 1)]}</p>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id5">
+<h4>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>swcet<span class="classifier">float</span></dt><dd><p>The WCET of function target. The units usually are in cycles</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipet.ipet.Ipet.run_ipet_hybrid">
+<span class="sig-name descname"><span class="pre">run_ipet_hybrid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#ipet.ipet.Ipet.run_ipet_hybrid" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Static WCET of function target, calculating the WCET of every function transverse the graph in post order.</p>
+<p>For this method, use measured weight (The CPI’s sum of measured weight and WCET of all “call function” inside of basic block)</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>swcet<span class="classifier">float</span></dt><dd><p>The WCET of function target. The units usually are in cycles</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipet.ipet.Ipet.run_ipet_static">
+<span class="sig-name descname"><span class="pre">run_ipet_static</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#ipet.ipet.Ipet.run_ipet_static" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Static WCET of function target, calculating the WCET of every function transverse the graph in post order.</p>
+<p>For this method, use static weight (The CPI’s sum of every instrunction for each basic block)</p>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id9">
+<h4>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>swcet<span class="classifier">float</span></dt><dd><p>The WCET of function target. The units usually are in cycles</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ipet.ipet.maketrans">
+<span class="sig-prename descclassname"><span class="pre">ipet.ipet.</span></span><span class="sig-name descname"><span class="pre">maketrans</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipet.ipet.maketrans" title="Link to this definition">¶</a></dt>
+<dd><p>Return a translation table usable for str.translate().</p>
+<p>If there is only one argument, it must be a dictionary mapping Unicode
+ordinals (integers) or characters to Unicode ordinals, strings or None.
+Character keys will be then converted to ordinals.
+If there are two arguments, they must be strings of equal length, and
+in the resulting dictionary, each character in x will be mapped to the
+character at the same position in y. If there is a third argument, it
+must be a string, whose characters will be mapped to None in the result.</p>
+</dd></dl>
+
+</section>
+<section id="module-ipet.static_ipet_facade">
+<span id="ipet-static-ipet-facade-module"></span><h2>ipet.static_ipet_facade module<a class="headerlink" href="#module-ipet.static_ipet_facade" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipet.static_ipet_facade.StaticIpetFacade">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ipet.static_ipet_facade.</span></span><span class="sig-name descname"><span class="pre">StaticIpetFacade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.wcet_data.WcetData" title="utils.wcet_data.WcetData"><span class="pre">WcetData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipet.static_ipet_facade.StaticIpetFacade" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for estimating the Worst-Case Execution Time (WCET) of a program.</p>
+<p>This class encapsulates the logic for calculating WCET using the IPET with all analyzes statically.</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h3>Attributes<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about wcet</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipet.static_ipet_facade.StaticIpetFacade.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ipet.static_ipet_facade.StaticIpetFacade.run" title="Link to this definition">¶</a></dt>
+<dd><p>Fully Static IPET pipeline for calculate sWCET.</p>
+<section id="id12">
+<h4>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id13">
+<h4>Returns<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ipet.static_ipet_facade.maketrans">
+<span class="sig-prename descclassname"><span class="pre">ipet.static_ipet_facade.</span></span><span class="sig-name descname"><span class="pre">maketrans</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipet.static_ipet_facade.maketrans" title="Link to this definition">¶</a></dt>
+<dd><p>Return a translation table usable for str.translate().</p>
+<p>If there is only one argument, it must be a dictionary mapping Unicode
+ordinals (integers) or characters to Unicode ordinals, strings or None.
+Character keys will be then converted to ordinals.
+If there are two arguments, they must be strings of equal length, and
+in the resulting dictionary, each character in x will be mapped to the
+character at the same position in y. If there is a third argument, it
+must be a string, whose characters will be mapped to None in the result.</p>
+</dd></dl>
+
+<span class="target" id="module-ipet"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interface_target.html" class="btn btn-neutral float-left" title="interface_target package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="main.html" class="btn btn-neutral float-right" title="main module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

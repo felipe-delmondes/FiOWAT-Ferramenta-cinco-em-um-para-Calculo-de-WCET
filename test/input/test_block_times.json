@@ -1,0 +1,11 @@
+{
+    "instrumentation": [
+        12
+    ],
+    "function": {
+        "_total": 1022,
+        "block1": 22,
+        "block2": 44,
+        "block3": 0
+    }
+}

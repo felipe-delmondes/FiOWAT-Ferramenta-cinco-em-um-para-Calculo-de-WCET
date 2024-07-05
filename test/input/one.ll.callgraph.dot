@@ -1,0 +1,5 @@
+digraph "Call graph: one.ll" {
+	label="Call graph: one.ll";
+
+	Node0x1c93e82a950 [shape=record,label="{main}"];
+}

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="report_generator package" href="report_generator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.create_files">utils.create_files module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.create_files.create_call_graph"><code class="docutils literal notranslate"><span class="pre">create_call_graph()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.create_files.create_ir"><code class="docutils literal notranslate"><span class="pre">create_ir()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.intermediate_values">utils.intermediate_values module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.intermediate_values.IntermediateValues"><code class="docutils literal notranslate"><span class="pre">IntermediateValues</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.logging_tools">utils.logging_tools module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.logging_tools.config_logger"><code class="docutils literal notranslate"><span class="pre">config_logger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utils.logging_tools.log_function_name"><code class="docutils literal notranslate"><span class="pre">log_function_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.user_project">utils.user_project module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.user_project.UserProject"><code class="docutils literal notranslate"><span class="pre">UserProject</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils.wcet_data">utils.wcet_data module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#utils.wcet_data.WcetData"><code class="docutils literal notranslate"><span class="pre">WcetData</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utils-package">
+<h1>utils package<a class="headerlink" href="#utils-package" title="Link to this heading">¶</a></h1>
+<section id="module-utils.create_files">
+<span id="utils-create-files-module"></span><h2>utils.create_files module<a class="headerlink" href="#module-utils.create_files" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.create_files.create_call_graph">
+<span class="sig-prename descclassname"><span class="pre">utils.create_files.</span></span><span class="sig-name descname"><span class="pre">create_call_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.create_files.create_call_graph" title="Link to this definition">¶</a></dt>
+<dd><p>Create call graph from “.ll file”. This call graph is in dot format</p>
+<p>Update this attributes of intermediate values:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>call_graph<span class="classifier">list</span></dt><dd><p>Contain all lines about call graph dot file</p>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Current user project</p>
+</dd>
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>Store all values to next steps</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.create_files.create_ir">
+<span class="sig-prename descclassname"><span class="pre">utils.create_files.</span></span><span class="sig-name descname"><span class="pre">create_ir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.create_files.create_ir" title="Link to this definition">¶</a></dt>
+<dd><p>Create file in Intermediate Representation (IR), whose extension is “.ll”</p>
+<p>Its directory is same of main file of project you analyze</p>
+<p>Update this attributes of intermediate values:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>ir<span class="classifier">list</span></dt><dd><p>All lines of “.ll file”. Contains information in Intermediate Representation</p>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Current user project</p>
+</dd>
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>Store all values to next steps</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-utils.intermediate_values">
+<span id="utils-intermediate-values-module"></span><h2>utils.intermediate_values module<a class="headerlink" href="#module-utils.intermediate_values" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.intermediate_values.</span></span><span class="sig-name descname"><span class="pre">IntermediateValues</span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DTO used in methodology pipeline to transfer values between functions.</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>ir<span class="classifier">list</span></dt><dd><p>Content of IR file (.ll)</p>
+</dd>
+<dt>call_graph<span class="classifier">list</span></dt><dd><p>Content of call graph file (.dot)</p>
+</dd>
+<dt>all_user_project_files<span class="classifier">list</span></dt><dd><p>Information about user source code in IR file.</p>
+<p>Example: {‘index_filename’: 2, ‘filename’: ‘Desktop\wcet_project\header_file.h’, ‘directory’: ‘C:UsersMarcus', ‘checksum’: ‘7bdd5928b1f3a6c967a6ea18142b9bc3’}</p>
+</dd>
+<dt>mapping_loop_lines<span class="classifier">list</span></dt><dd><p>Relationship between source code loop line and IR loop line.</p>
+<p>Example: {‘index_filename’: 14, ‘line_source_code’: 14, ‘index_ir’: 185, ‘line_ir_code’: 273}</p>
+</dd>
+<dt>mapping_loop_bound<span class="classifier">dict</span></dt><dd><p>Relationship between IR line and number of executions.</p>
+<p>Example: {273: 50, 294: 10, 354: 20}</p>
+</dd>
+<dt>mapping_important_functions_lines<span class="classifier">dict</span></dt><dd><p>Relationship between function name and its line in IR file.</p>
+<p>Example: {‘sprintf’: 46}</p>
+</dd>
+<dt>mapping_void_functions_lines<span class="classifier">dict</span></dt><dd><p>Relationship between function name and its line in IR file.</p>
+<p>Example: {‘rand’: 112}</p>
+</dd>
+<dt>function_name_post_order<span class="classifier">list</span></dt><dd><p>All function name in post order.</p>
+<p>Example: [‘llvm.va_end’, ‘__stdio_common_vfscanf’, …]</p>
+</dd>
+<dt>worst_path_basic_block<span class="classifier">dict</span></dt><dd><p>All functions, and its relationship between basic blocks name of worst path and number of executions.</p>
+</dd>
+<dt>init_debug_table<span class="classifier">int</span></dt><dd><p>Initial Position Line of Debug Table in IR file.</p>
+<p>This debug table start with: !0.</p>
+</dd>
+<dt>number_executions_worst_path<span class="classifier">float</span></dt><dd><p>Number of executions in total worst path.</p>
+<p>This number is the sum of all executions number of basic blocks.</p>
+<p>This attribute is float because avoid in dynamic calculation, realize a lot of conversations of int to float.</p>
+<p>Example: Worst Path -&gt; BB1 + BB3 + BB4 -&gt; 1 + 20 + 1 -&gt; 22</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_all_user_project_files">
+<span class="sig-name descname"><span class="pre">get_all_user_project_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_all_user_project_files" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_all_worst_path_basic_block">
+<span class="sig-name descname"><span class="pre">get_all_worst_path_basic_block</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_all_worst_path_basic_block" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_call_graph">
+<span class="sig-name descname"><span class="pre">get_call_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_call_graph" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_function_name_post_order">
+<span class="sig-name descname"><span class="pre">get_function_name_post_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_function_name_post_order" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_init_debug_table">
+<span class="sig-name descname"><span class="pre">get_init_debug_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_init_debug_table" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_ir">
+<span class="sig-name descname"><span class="pre">get_ir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_ir" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_mapping_important_functions_lines">
+<span class="sig-name descname"><span class="pre">get_mapping_important_functions_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_mapping_important_functions_lines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_mapping_loop_bound">
+<span class="sig-name descname"><span class="pre">get_mapping_loop_bound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_mapping_loop_bound" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_mapping_loop_lines">
+<span class="sig-name descname"><span class="pre">get_mapping_loop_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_mapping_loop_lines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_mapping_void_functions_lines">
+<span class="sig-name descname"><span class="pre">get_mapping_void_functions_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_mapping_void_functions_lines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_number_executions_worst_path">
+<span class="sig-name descname"><span class="pre">get_number_executions_worst_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_number_executions_worst_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.get_worst_path_basic_block">
+<span class="sig-name descname"><span class="pre">get_worst_path_basic_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.get_worst_path_basic_block" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.increment_number_executions_worst_path">
+<span class="sig-name descname"><span class="pre">increment_number_executions_worst_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_executions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.increment_number_executions_worst_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_all_user_project_files">
+<span class="sig-name descname"><span class="pre">set_all_user_project_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_user_project_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_all_user_project_files" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_call_graph">
+<span class="sig-name descname"><span class="pre">set_call_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">call_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_call_graph" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_function_name_post_order">
+<span class="sig-name descname"><span class="pre">set_function_name_post_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_function_name_post_order" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_init_debug_table">
+<span class="sig-name descname"><span class="pre">set_init_debug_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_init_debug_table" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_ir">
+<span class="sig-name descname"><span class="pre">set_ir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_ir" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_mapping_important_functions_lines">
+<span class="sig-name descname"><span class="pre">set_mapping_important_functions_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_mapping_important_functions_lines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_mapping_loop_bound">
+<span class="sig-name descname"><span class="pre">set_mapping_loop_bound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop_bound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_mapping_loop_bound" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_mapping_loop_lines">
+<span class="sig-name descname"><span class="pre">set_mapping_loop_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_mapping_loop_lines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_mapping_void_functions_lines">
+<span class="sig-name descname"><span class="pre">set_mapping_void_functions_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_mapping_void_functions_lines" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.intermediate_values.IntermediateValues.set_worst_path_basic_block">
+<span class="sig-name descname"><span class="pre">set_worst_path_basic_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_executions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.intermediate_values.IntermediateValues.set_worst_path_basic_block" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-utils.logging_tools">
+<span id="utils-logging-tools-module"></span><h2>utils.logging_tools module<a class="headerlink" href="#module-utils.logging_tools" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.logging_tools.config_logger">
+<span class="sig-prename descclassname"><span class="pre">utils.logging_tools.</span></span><span class="sig-name descname"><span class="pre">config_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.logging_tools.config_logger" title="Link to this definition">¶</a></dt>
+<dd><p>Save in log file about decorated function</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>Path of log file</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.logging_tools.log_function_name">
+<span class="sig-prename descclassname"><span class="pre">utils.logging_tools.</span></span><span class="sig-name descname"><span class="pre">log_function_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.logging_tools.log_function_name" title="Link to this definition">¶</a></dt>
+<dd><p>Print in the terminal the decorated function</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>func<span class="classifier">function</span></dt><dd><p>Function address that will be logged</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h3>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>inner_func<span class="classifier">function</span></dt><dd><p>Decorated function</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-utils.user_project">
+<span id="utils-user-project-module"></span><h2>utils.user_project module<a class="headerlink" href="#module-utils.user_project" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.user_project.UserProject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.user_project.</span></span><span class="sig-name descname"><span class="pre">UserProject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">architecture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vendor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operational_system</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">microcontroller_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function_target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'main'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['pdf']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deadline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.user_project.UserProject" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DTO of user configurations, extracted from config.yaml file.</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>The same of attributes</p>
+</div></blockquote>
+</section>
+<section id="id9">
+<h3>Attributes<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>main_file_name<span class="classifier">str</span></dt><dd><p>Name of main file of user project without extension. Example: quantum or dot_product</p>
+</dd>
+<dt>input_directory<span class="classifier">str</span></dt><dd><p>Directory where main file is located</p>
+</dd>
+<dt>output_directory<span class="classifier">str</span></dt><dd><p>Directory where report will be generated</p>
+</dd>
+<dt>architecture<span class="classifier">str</span></dt><dd><p>Architeture of target. Example: avr, x86_64</p>
+</dd>
+<dt>vendor<span class="classifier">str</span></dt><dd><p>Vendor of target. Example: pc, atmel</p>
+</dd>
+<dt>operational_system<span class="classifier">str</span></dt><dd><p>Operational system of target. Example: windows, none</p>
+</dd>
+<dt>microcontroller_unit<span class="classifier">str</span></dt><dd><p>Microcontroller of target. Example: atmega328, unknown</p>
+</dd>
+<dt>function_target<span class="classifier">str, default = main</span></dt><dd><p>Function name that user wants calculate WCET</p>
+</dd>
+<dt>report_format<span class="classifier">list, default = [“pdf”]</span></dt><dd><p>Which format the user wants to the report, each format generates another report. Options: pdf | json</p>
+</dd>
+<dt>deadline<span class="classifier">float, default = 0.0</span></dt><dd><p>Deadline in cycles of program. If the value is 0, this means undefined/irrelevant deadline.</p>
+</dd>
+<dt>llvm_path<span class="classifier">str</span></dt><dd><p>Directory where LLVM 16 is installed</p>
+</dd>
+<dt>cbmc_path<span class="classifier">str</span></dt><dd><p>Directory where CBMC is installed</p>
+</dd>
+<dt>board<span class="classifier">bool</span></dt><dd><p>Flag that select if the target is a board</p>
+</dd>
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Specific the serial port where the comunication with board will occurs</p>
+</dd>
+<dt>flash_board<span class="classifier">bool, default = False</span></dt><dd><p>If the board already has the program loaded</p>
+</dd>
+<dt>input_types<span class="classifier">list</span></dt><dd><p>List of input variables types in the same sequence of input values.</p>
+<p>Example: [int(15), float, int]</p>
+</dd>
+<dt>chosen_input<span class="classifier">list</span></dt><dd><p>User selected input. Example: [4, 3, 10, -5]</p>
+</dd>
+<dt>input_bounds_min<span class="classifier">list</span></dt><dd><p>List of input variables bounds min (ordered). If simple variable, pass single number. If array pass list. The range of minimum values is closedd.</p>
+<p>Example: [-1, 0, 70]</p>
+</dd>
+<dt>input_bounds_max<span class="classifier">list</span></dt><dd><p>List of input variables bounds max (ordered). If simple variable, pass single number. If array pass list. The range of maximum values is opend.</p>
+<p>Example: [5, 100, -3]</p>
+</dd>
+<dt>input_gen_method<span class="classifier">str</span></dt><dd><p>Select the method to generate input for instructions coverage.</p>
+<p>Example: cbmc</p>
+</dd>
+<dt>input_n_test_cases<span class="classifier">int</span></dt><dd><p>Choose how many input values will be generated using input generation component</p>
+</dd>
+<dt>number_exec<span class="classifier">int, default = 10000</span></dt><dd><p>Executions number of program using the same input</p>
+</dd>
+<dt>pwcet_bounds<span class="classifier">list, default = [1E-9, 1E-10, 1E-11, 1E-12]</span></dt><dd><p>Desired probability of exceedance</p>
+</dd>
+<dt>parent_selection_type<span class="classifier">str, default = sss</span></dt><dd><p>Technique to choose the parents. Example: tournament</p>
+</dd>
+<dt>crossover_type<span class="classifier">str, default = two_points</span></dt><dd><p>Technique to choose crossover between two individuals</p>
+</dd>
+<dt>mutation_type<span class="classifier">str, default = adaptive</span></dt><dd><p>Technique to insert variability in individuals</p>
+</dd>
+<dt>mutation_percent_genes<span class="classifier">list, default = [70,15]</span></dt><dd><p>Only adaptive option requires list, for other options set one value only</p>
+<p>Example: [30]</p>
+</dd>
+<dt>stop_criteria<span class="classifier">bool, default = True</span></dt><dd><p>Stop the evolution using the square of genes number or the cubic of genes number</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_architecture">
+<span class="sig-name descname"><span class="pre">get_architecture</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_architecture" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_board">
+<span class="sig-name descname"><span class="pre">get_board</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_board" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_cbmc_path">
+<span class="sig-name descname"><span class="pre">get_cbmc_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_cbmc_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_chosen_input">
+<span class="sig-name descname"><span class="pre">get_chosen_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_chosen_input" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_crossover_type">
+<span class="sig-name descname"><span class="pre">get_crossover_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_crossover_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_deadline">
+<span class="sig-name descname"><span class="pre">get_deadline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_deadline" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_env_name">
+<span class="sig-name descname"><span class="pre">get_env_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_env_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_flash_board">
+<span class="sig-name descname"><span class="pre">get_flash_board</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_flash_board" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_function_target">
+<span class="sig-name descname"><span class="pre">get_function_target</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_function_target" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_input_bounds_max">
+<span class="sig-name descname"><span class="pre">get_input_bounds_max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_input_bounds_max" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_input_bounds_min">
+<span class="sig-name descname"><span class="pre">get_input_bounds_min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_input_bounds_min" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_input_directory">
+<span class="sig-name descname"><span class="pre">get_input_directory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_input_directory" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_input_gen_method">
+<span class="sig-name descname"><span class="pre">get_input_gen_method</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_input_gen_method" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_input_n_test_cases">
+<span class="sig-name descname"><span class="pre">get_input_n_test_cases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_input_n_test_cases" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_input_types">
+<span class="sig-name descname"><span class="pre">get_input_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_input_types" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_llvm_path">
+<span class="sig-name descname"><span class="pre">get_llvm_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_llvm_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_main_file_name">
+<span class="sig-name descname"><span class="pre">get_main_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_main_file_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_microcontroller_unit">
+<span class="sig-name descname"><span class="pre">get_microcontroller_unit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_microcontroller_unit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_mutation_percent_genes">
+<span class="sig-name descname"><span class="pre">get_mutation_percent_genes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_mutation_percent_genes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_mutation_type">
+<span class="sig-name descname"><span class="pre">get_mutation_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_mutation_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_number_exec">
+<span class="sig-name descname"><span class="pre">get_number_exec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_number_exec" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_operational_system">
+<span class="sig-name descname"><span class="pre">get_operational_system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_operational_system" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_output_directory">
+<span class="sig-name descname"><span class="pre">get_output_directory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_output_directory" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_parent_selection_type">
+<span class="sig-name descname"><span class="pre">get_parent_selection_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_parent_selection_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_pwcet_bounds">
+<span class="sig-name descname"><span class="pre">get_pwcet_bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_pwcet_bounds" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_report_format">
+<span class="sig-name descname"><span class="pre">get_report_format</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_report_format" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_serial_port">
+<span class="sig-name descname"><span class="pre">get_serial_port</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_serial_port" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_stop_criteria">
+<span class="sig-name descname"><span class="pre">get_stop_criteria</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_stop_criteria" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_triple_target">
+<span class="sig-name descname"><span class="pre">get_triple_target</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_triple_target" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.get_vendor">
+<span class="sig-name descname"><span class="pre">get_vendor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.get_vendor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.set_evt">
+<span class="sig-name descname"><span class="pre">set_evt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_exec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pwcet_bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.set_evt" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.set_external_libs">
+<span class="sig-name descname"><span class="pre">set_external_libs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">llvm_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cbmc_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.set_external_libs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.set_ga">
+<span class="sig-name descname"><span class="pre">set_ga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_selection_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crossover_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutation_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutation_percent_genes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop_criteria</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.set_ga" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.set_input_directory">
+<span class="sig-name descname"><span class="pre">set_input_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.set_input_directory" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.set_inputs">
+<span class="sig-name descname"><span class="pre">set_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chosen_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_bounds_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_bounds_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_gen_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_n_test_cases</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.set_inputs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.set_output_directory">
+<span class="sig-name descname"><span class="pre">set_output_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.set_output_directory" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.user_project.UserProject.set_target">
+<span class="sig-name descname"><span class="pre">set_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serial_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flash_board</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.user_project.UserProject.set_target" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-utils.wcet_data">
+<span id="utils-wcet-data-module"></span><h2>utils.wcet_data module<a class="headerlink" href="#module-utils.wcet_data" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.wcet_data.</span></span><span class="sig-name descname"><span class="pre">WcetData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.wcet_data.WcetData" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>DTO of WCET calculated by methodology.</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id11">
+<h3>Attributes<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>technique_name<span class="classifier">str</span></dt><dd><p>Technique name used to calculate WCET. This name is used to report</p>
+<p>Example: Static IPET</p>
+</dd>
+<dt>swcet<span class="classifier">float</span></dt><dd><p>Time in cycles of Static WCET (sWCET). This WCET was calculated by analyzing the code (source code or IR)</p>
+</dd>
+<dt>pwcet<span class="classifier">list</span></dt><dd><p>Time in cycles of Probabilistic WCET (pWCET). This WCET was calculated by executing the program.</p>
+<p>This value is a tuple with probability of exceedance and its respective pWCET.</p>
+<p>Example: [(1E-9, 75000), (1E-10, 100000)]</p>
+</dd>
+<dt>hwm<span class="classifier">float</span></dt><dd><p>Time in cycles of High-Water Mark. The largest measurement observed during analyzes</p>
+</dd>
+<dt>iid_flag<span class="classifier">str</span></dt><dd><p>Independency and identically distribution of data (IID) tests warning.</p>
+<p>Options: Ok, passed | Failed, review data set. (LJung-box not passed)</p>
+</dd>
+<dt>histogram<span class="classifier">Dataframe</span></dt><dd><p>Cycles histogram, from EVT methodology runs. To access this histogram: dataframe.values</p>
+</dd>
+<dt>worst_input<span class="classifier">list</span></dt><dd><p>Input set that generate the WCET</p>
+<p>Example: [10, 9, 8]</p>
+</dd>
+<dt>analysis_start_time<span class="classifier">str</span></dt><dd><p>Date when analysis start. Example: 2023/07/12 - 20:15</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_analysis_start_time">
+<span class="sig-name descname"><span class="pre">get_analysis_start_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_analysis_start_time" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_histogram">
+<span class="sig-name descname"><span class="pre">get_histogram</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_histogram" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_hwm">
+<span class="sig-name descname"><span class="pre">get_hwm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_hwm" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_iid_flag">
+<span class="sig-name descname"><span class="pre">get_iid_flag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_iid_flag" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_pwcet">
+<span class="sig-name descname"><span class="pre">get_pwcet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_pwcet" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_swcet">
+<span class="sig-name descname"><span class="pre">get_swcet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_swcet" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_technique_name">
+<span class="sig-name descname"><span class="pre">get_technique_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_technique_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.get_worst_input">
+<span class="sig-name descname"><span class="pre">get_worst_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.get_worst_input" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.set_histogram">
+<span class="sig-name descname"><span class="pre">set_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">histogram</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.set_histogram" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.set_hwm">
+<span class="sig-name descname"><span class="pre">set_hwm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hwm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.set_hwm" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.set_iid_flag">
+<span class="sig-name descname"><span class="pre">set_iid_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iid_flag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.set_iid_flag" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.set_pwcet">
+<span class="sig-name descname"><span class="pre">set_pwcet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pwcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.set_pwcet" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.set_swcet">
+<span class="sig-name descname"><span class="pre">set_swcet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.set_swcet" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.wcet_data.WcetData.set_worst_input">
+<span class="sig-name descname"><span class="pre">set_worst_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">worst_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.wcet_data.WcetData.set_worst_input" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<span class="target" id="module-utils"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="report_generator.html" class="btn btn-neutral float-left" title="report_generator package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

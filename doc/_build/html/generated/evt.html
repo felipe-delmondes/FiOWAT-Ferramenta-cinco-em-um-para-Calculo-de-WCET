@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>evt package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ga package" href="ga.html" />
+    <link rel="prev" title="constraint_solver package" href="constraint_solver.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">evt package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-evt.evt_facade">evt.evt_facade module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#evt.evt_facade.EvtFacade"><code class="docutils literal notranslate"><span class="pre">EvtFacade</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-evt.evt_method">evt.evt_method module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#evt.evt_method.Evt"><code class="docutils literal notranslate"><span class="pre">Evt</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evt.evt_method.evt_running"><code class="docutils literal notranslate"><span class="pre">evt_running()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">evt package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/evt.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="evt-package">
+<h1>evt package<a class="headerlink" href="#evt-package" title="Link to this heading">¶</a></h1>
+<section id="module-evt.evt_facade">
+<span id="evt-evt-facade-module"></span><h2>evt.evt_facade module<a class="headerlink" href="#module-evt.evt_facade" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="evt.evt_facade.EvtFacade">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">evt.evt_facade.</span></span><span class="sig-name descname"><span class="pre">EvtFacade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.wcet_data.WcetData" title="utils.wcet_data.WcetData"><span class="pre">WcetData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evt.evt_facade.EvtFacade" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for estimating the Probabilistic Worst-Case Execution Time (pWCET) of a program using EVT.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about wcet</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_facade.EvtFacade.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#evt.evt_facade.EvtFacade.run" title="Link to this definition">¶</a></dt>
+<dd><p>Method that instantiate the EVT runs with the target interface and later EVT analysis.</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-evt.evt_method">
+<span id="evt-evt-method-module"></span><h2>evt.evt_method module<a class="headerlink" href="#module-evt.evt_method" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="evt.evt_method.Evt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">evt.evt_method.</span></span><span class="sig-name descname"><span class="pre">Evt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evt.evt_method.Evt" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implements the Evt methodology for WCET estimation based in the probabilistc analysis. 
+The method contain several steps taken in order to achieve best curve fitting based on the data provided.
+Method pipeline follows as: data aquisition and import, method selection,
+curve fitting, iid testing, Pwcet estimation and results plot</p>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project.</p>
+</dd>
+<dt>csv_filename<span class="classifier">str</span></dt><dd><p>Name of the csv file containing runs cycles count.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Attributes<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>pwcet_bounds<span class="classifier">list</span></dt><dd><p>Desired values of exceedance of probability to be obatined.</p>
+</dd>
+<dt>csv_filename<span class="classifier">str</span></dt><dd><p>Name of the csv file containing runs cycles count.</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.Fit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cvonmises</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ks_fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evt.evt_method.Evt.Fit" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Fitted Distribution Object</p>
+<section id="id4">
+<h4>Attributes<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dist<span class="classifier">st.rv.frozen</span></dt><dd><p>Distribution object</p>
+</dd>
+<dt>shape<span class="classifier">float</span></dt><dd><p>Distribution parameter</p>
+</dd>
+<dt>loc<span class="classifier">float</span></dt><dd><p>Distribution parameters</p>
+</dd>
+<dt>scale<span class="classifier">float</span></dt><dd><p>Distribution parameters</p>
+</dd>
+<dt>cvonmises<span class="classifier">CramerVonMisesResult</span></dt><dd><p>Goodness of fit parameter, Cramer Von Mises</p>
+</dd>
+<dt>ks_fit<span class="classifier">KstestResult</span></dt><dd><p>Goodness of fit parameter, Kolmogorov Smirnov</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h4>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.dataimport">
+<span class="sig-name descname"><span class="pre">dataimport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usecols_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#evt.evt_method.Evt.dataimport" title="Link to this definition">¶</a></dt>
+<dd><p>Imports the data set values from a .csv file.</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>filename<span class="classifier">str</span></dt><dd><p>File name, default =’fibcall_30_10000.csv’</p>
+</dd>
+<dt>header<span class="classifier">int, default = 0</span></dt><dd><p>Header line</p>
+</dd>
+<dt>usecols<span class="classifier">int, default = 0</span></dt><dd><p>Data Column</p>
+</dd>
+<dt>clock_freq<span class="classifier">int, default = 1 </span></dt><dd><p>Conversion factor from ms to cycles</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rawdata_df<span class="classifier">pd.DataFrame</span></dt><dd><p>Data set containg the cycle counts of all runs.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.fitting">
+<span class="sig-name descname"><span class="pre">fitting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">rv_continuous</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#evt.evt_method.Evt.fitting" title="Link to this definition">¶</a></dt>
+<dd><p>Curve fitting method.</p>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>values<span class="classifier">pd.DataFrame</span></dt><dd><p>Data set</p>
+</dd>
+<dt>method<span class="classifier">str</span></dt><dd><p>Maximum extraction method name.</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h4>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dist<span class="classifier">st.rv.frozen</span></dt><dd><p>Distribution object.</p>
+</dd>
+<dt>shape<span class="classifier">float</span></dt><dd><p>Distribution parameter.</p>
+</dd>
+<dt>loc<span class="classifier">float</span></dt><dd><p>Distribution parameter.</p>
+</dd>
+<dt>scale<span class="classifier">float</span></dt><dd><p>Distribution parameter.</p>
+</dd>
+<dt>cvonmises<span class="classifier">CramerVonMisesResult</span></dt><dd><p>Goodness of fit parameter, Cramer Von Mises</p>
+</dd>
+<dt>ks_fit<span class="classifier">KstestResult</span></dt><dd><p>Goodness of fit parameter, Kolmogorov Smirnov</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.pwcet">
+<span class="sig-name descname"><span class="pre">pwcet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">rv_continuous</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#evt.evt_method.Evt.pwcet" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates pWCET from the exceedance probability desired.</p>
+<section id="id10">
+<h4>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>exec_values<span class="classifier">float</span></dt><dd><p>Exceedance probability values desired.</p>
+</dd>
+<dt>dist<span class="classifier">st.rv_continuous</span></dt><dd><p>Continuos distribution; scypy.stats.rv_continuous.</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h4>Returns<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>pwcet_proj<span class="classifier">ndarray.float</span></dt><dd><p>pWCET values of outputs.</p>
+</dd>
+<dt>exceed_prob<span class="classifier">ndarray.float</span></dt><dd><p>Exceedance of probability array.</p>
+</dd>
+<dt>cycles_pwcet<span class="classifier">ndarray.float</span></dt><dd><p>pWCET values of exceed_prob array.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#evt.evt_method.Evt.run" title="Link to this definition">¶</a></dt>
+<dd><p>Main program pipeline for the EVT methodology.</p>
+<section id="id12">
+<h4>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>Evt<span class="classifier">EVT (self)</span></dt><dd><p>Object of EVT</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h4>Returns<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>pwcet_proj<span class="classifier">list</span></dt><dd><p>pWCET values for each exceedance of probabilty in pWCET bounds.</p>
+</dd>
+<dt>iid_flag<span class="classifier">str</span></dt><dd><p>IID flag of statistical tests.</p>
+</dd>
+<dt>rawdata_df<span class="classifier">pd.DataFrame</span></dt><dd><p>Dataframe cotaining the full data set used in the analysis.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.sel_extremos_bm">
+<span class="sig-name descname"><span class="pre">sel_extremos_bm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocksize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#evt.evt_method.Evt.sel_extremos_bm" title="Link to this definition">¶</a></dt>
+<dd><p>Block maxima method of filtering maximum values.</p>
+<section id="id14">
+<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data<span class="classifier">pd.DataFrame</span></dt><dd><p>Data set</p>
+</dd>
+<dt>blocksize<span class="classifier">int</span></dt><dd><p>Block size value</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h4>Returns<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>extremos<span class="classifier">pd.DataFrame</span></dt><dd><p>derived maximum valuesfrom data set.</p>
+</dd>
+<dt>len_ext<span class="classifier">int</span></dt><dd><p>Number of maximum values found.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.sel_extremos_pot">
+<span class="sig-name descname"><span class="pre">sel_extremos_pot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#evt.evt_method.Evt.sel_extremos_pot" title="Link to this definition">¶</a></dt>
+<dd><p>Peaks over Threshold method of filtering maximum values.</p>
+<section id="id16">
+<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>data<span class="classifier">pd.DataFrame</span></dt><dd><p>Data set</p>
+</dd>
+<dt>threshold<span class="classifier">int</span></dt><dd><p>Threshold value</p>
+</dd>
+<dt>export<span class="classifier">bool, default = False.</span></dt><dd><p>Exports the output as a .csv file. This argument is optional.</p>
+</dd>
+<dt>clock_freq<span class="classifier">int, default = 1. </span></dt><dd><p>Conversion factor from ms to cycles</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h4>Returns<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>extremos<span class="classifier">pd.DataFrame</span></dt><dd><p>derived maximum valuesfrom data set.</p>
+</dd>
+<dt>len_ext<span class="classifier">int</span></dt><dd><p>Number of maximum values found.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.stats_fit_validation">
+<span class="sig-name descname"><span class="pre">stats_fit_validation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FIT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">rv_continuous</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exceed_prob_ecdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ECDF</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#evt.evt_method.Evt.stats_fit_validation" title="Link to this definition">¶</a></dt>
+<dd><p>Perform paired samples statiscal tests in order to validate the fitting of data set and fitted distribution.</p>
+<section id="id18">
+<h4>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rawdata_df<span class="classifier">pd.DataFrame</span></dt><dd><p>Original data set.</p>
+</dd>
+<dt>seg<span class="classifier">int, default = 1000</span></dt><dd><p>Segment size for statistical methods. This argument is optional.</p>
+</dd>
+<dt>rep<span class="classifier">int, default = 100</span></dt><dd><p>Number of runs for statistical methods. This argument is optional.</p>
+</dd>
+<dt>alpha<span class="classifier">float, default = 0.05</span></dt><dd><p>Confidence level. This argument is optional.</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h4>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>ks<span class="classifier">list</span></dt><dd><p>Komolgorov-Smirnov test results.</p>
+</dd>
+<dt>ad<span class="classifier">list</span></dt><dd><p>Anderson Darling test results, where the AD adjusts for differnte sample sizes.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evt.evt_method.Evt.stats_validation">
+<span class="sig-name descname"><span class="pre">stats_validation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#evt.evt_method.Evt.stats_validation" title="Link to this definition">¶</a></dt>
+<dd><p>Perform a series of statiscal tests in order to validate IID assumptions.</p>
+<section id="id20">
+<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>rawdata_df<span class="classifier">pd.DataFrame</span></dt><dd><p>Original data set.</p>
+</dd>
+<dt>seg<span class="classifier">int, default = 1000</span></dt><dd><p>Segment size for statistical methods. This argument is optional.</p>
+</dd>
+<dt>rep<span class="classifier">int, default = 100</span></dt><dd><p>Number of runs for statistical methods. This argument is optional.</p>
+</dd>
+<dt>alpha<span class="classifier">float, default = 0.05</span></dt><dd><p>Confidence level. This argument is optional.</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h4>Returns<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>ww<span class="classifier">pd.DataFrame</span></dt><dd><p>Wald Wolfowitz test results.</p>
+</dd>
+<dt>lb_[2,5,10,20,50]:pd.DataFrame</dt><dd><p>Ljung-box tests, where 2,5,10,20,50, are the lags tested.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="evt.evt_method.evt_running">
+<span class="sig-prename descclassname"><span class="pre">evt.evt_method.</span></span><span class="sig-name descname"><span class="pre">evt_running</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#evt.evt_method.evt_running" title="Link to this definition">¶</a></dt>
+<dd><p>Execute N times the same input, used by EVT for generate sample.</p>
+<p>If haven’t variability in measurements, so abort the execution and generate report without pWCET.</p>
+<blockquote>
+<div><p>Parameters</p>
+</div></blockquote>
+<dl class="simple">
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>DTO with all information about WCET results</p>
+</dd>
+<dt>interface_target<span class="classifier">InterfaceTarget</span></dt><dd><p>Object to adapter FioWAT with many boards or simulators</p>
+</dd>
+<dt>args<span class="classifier">list</span></dt><dd><p>Input set used by EVT</p>
+</dd>
+</dl>
+<section id="id22">
+<h3>Returns<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>results_exec<span class="classifier">list</span></dt><dd><p>All cycles executed. If return None, so it’s problem to execute this program in EVT</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<span class="target" id="module-evt"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="constraint_solver.html" class="btn btn-neutral float-left" title="constraint_solver package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ga.html" class="btn btn-neutral float-right" title="ga package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/InstrumentBasicBlocks-build/CMakeFiles/intrinsics_gen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/InstrumentBasicBlocks-build/CMakeFiles/omp_gen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/InstrumentBasicBlocks-build/CMakeFiles/acc_gen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/InstrumentBasicBlocks-build/CMakeFiles/RISCVTargetParserTableGen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/InstrumentBasicBlocks-build/CMakeFiles/InstrumentBasicBlocks.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/InstrumentBasicBlocks-build/CMakeFiles/edit_cache.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/InstrumentBasicBlocks-build/CMakeFiles/rebuild_cache.dir

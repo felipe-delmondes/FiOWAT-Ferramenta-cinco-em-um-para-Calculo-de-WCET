@@ -1,0 +1,50 @@
+
+metadata:
+  project_name: bsort20_ga_dynamic_xtensa
+  c_program_path:
+  project_output:
+  architecture: riscv32
+  vendor: riscv
+  operational_system: none
+  microcontroller_unit: esp32-c3
+
+
+target:
+  board: True
+  usb_port: /dev/ttyACM0
+  flash_board: False
+
+
+
+inputs:
+  chosen_input: []
+  types:  [int(20)]
+  bounds_min:  [0]
+  bounds_max: [20]
+  gen_method: none
+  n_test_cases: 1
+
+
+run:
+  methods: dynamic_ga
+  deadline: 0
+  function_target: main
+  report: [pdf]
+
+
+evt:
+  number_exec: 10000
+  pwcet_bounds: [1E-9, 1E-10, 1E-11, 1E-12]
+
+
+ga:
+  parent_selection_type: sss
+  crossover_type: two_points
+  mutation_type: adaptive
+  mutation_percent_genes: [70,15]
+  stop_criteria: True
+
+
+external_libs:
+  llvm_path:
+  cbmc_path:

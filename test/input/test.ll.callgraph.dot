@@ -1,0 +1,11 @@
+digraph "Call graph: /home/munak98/Documents/TCC-PES/test/unit_test/artifacts/test.ll" {
+	label="Call graph: /home/munak98/Documents/TCC-PES/test/unit_test/artifacts/test.ll";
+
+	Node0x556319c50560 [shape=record,label="{BubbleSort}"];
+	Node0x556319c52160 [shape=record,label="{main}"];
+	Node0x556319c52160 -> Node0x556319c54ad0;
+	Node0x556319c52160 -> Node0x556319c54b50;
+	Node0x556319c52160 -> Node0x556319c50560;
+	Node0x556319c54ad0 [shape=record,label="{printf}"];
+	Node0x556319c54b50 [shape=record,label="{scanf}"];
+}

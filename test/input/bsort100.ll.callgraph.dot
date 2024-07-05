@@ -1,0 +1,9 @@
+digraph "Call graph: bsort100.ll" {
+	label="Call graph: bsort100.ll";
+
+	Node0x227c27fad50 [shape=record,label="{main}"];
+	Node0x227c27fad50 -> Node0x227c27fb2d0;
+	Node0x227c27fad50 -> Node0x227c27fb6d0;
+	Node0x227c27fb2d0 [shape=record,label="{Initialize}"];
+	Node0x227c27fb6d0 [shape=record,label="{BubbleSort}"];
+}

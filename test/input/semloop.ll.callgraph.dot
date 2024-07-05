@@ -1,0 +1,26 @@
+digraph "Call graph: semloop.ll" {
+	label="Call graph: semloop.ll";
+
+	Node0x1c93e829a50 [shape=record,label="{vsprintf}"];
+	Node0x1c93e829a50 -> Node0x1c93e82a8d0;
+	Node0x1c93e829ad0 [shape=record,label="{sprintf}"];
+	Node0x1c93e829ad0 -> Node0x1c93e828f50;
+	Node0x1c93e829ad0 -> Node0x1c93e82a2d0;
+	Node0x1c93e829ad0 -> Node0x1c93e82ac50;
+	Node0x1c93e8296d0 [shape=record,label="{_snprintf}"];
+	Node0x1c93e8296d0 -> Node0x1c93e828f50;
+	Node0x1c93e8296d0 -> Node0x1c93e8299d0;
+	Node0x1c93e8296d0 -> Node0x1c93e82ac50;
+	Node0x1c93e82ac50 [shape=record,label="{llvm.va_end}"];
+	Node0x1c93e82a2d0 [shape=record,label="{_vsprintf_l}"];
+	Node0x1c93e82a2d0 -> Node0x1c93e82a8d0;
+	Node0x1c93e82a8d0 [shape=record,label="{_vsnprintf_l}"];
+	Node0x1c93e82a8d0 -> Node0x1c93e82ad50;
+	Node0x1c93e82a8d0 -> Node0x1c93e8291d0;
+	Node0x1c93e8299d0 [shape=record,label="{_vsnprintf}"];
+	Node0x1c93e8299d0 -> Node0x1c93e82a8d0;
+	Node0x1c93e82a950 [shape=record,label="{main}"];
+	Node0x1c93e828f50 [shape=record,label="{llvm.va_start}"];
+	Node0x1c93e8291d0 [shape=record,label="{__stdio_common_vsprintf}"];
+	Node0x1c93e82ad50 [shape=record,label="{__local_stdio_printf_options}"];
+}

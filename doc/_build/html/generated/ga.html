@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ga package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="inputs package" href="inputs.html" />
+    <link rel="prev" title="evt package" href="evt.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ga package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-ga.dynamic_ga">ga.dynamic_ga module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ga.dynamic_ga.GA"><code class="docutils literal notranslate"><span class="pre">GA</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ga.dynamic_ga_facade">ga.dynamic_ga_facade module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ga.dynamic_ga_facade.DynamicGaFacade"><code class="docutils literal notranslate"><span class="pre">DynamicGaFacade</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">ga package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/ga.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ga-package">
+<h1>ga package<a class="headerlink" href="#ga-package" title="Link to this heading">¶</a></h1>
+<section id="module-ga.dynamic_ga">
+<span id="ga-dynamic-ga-module"></span><h2>ga.dynamic_ga module<a class="headerlink" href="#module-ga.dynamic_ga" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ga.dynamic_ga.</span></span><span class="sig-name descname"><span class="pre">GA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="inputs.html#inputs.input_manager.InputManager" title="inputs.input_manager.InputManager"><span class="pre">InputManager</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="interface_target.html#interface_target.interface_target.InterfaceTarget" title="interface_target.interface_target.InterfaceTarget"><span class="pre">InterfaceTarget</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.intermediate_values.IntermediateValues" title="utils.intermediate_values.IntermediateValues"><span class="pre">IntermediateValues</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ga.dynamic_ga.GA" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Estimate the dynamic WCET 
+Or, given a worst path, search for the input that entails this path
+Using PyGaD as library of a genetic algorithm</p>
+<p>The variation depends of run method: &lt;dynamic_ga | WPEVT&gt;</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>input_manager</dt><dd><p>Contain all information about the input vector</p>
+</dd>
+<dt>interface_target</dt><dd><p>Contain all information about the board / simulator target</p>
+</dd>
+<dt>inter_values: IntermediateValues</dt><dd><p>Contain all intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>csst<span class="classifier">string</span></dt><dd><p>Define the crossover selection type to be chosen in GA</p>
+</dd>
+<dt>gen_type<span class="classifier">list</span></dt><dd><p>Define the type of each variable to be optimized</p>
+</dd>
+<dt>gen_space<span class="classifier">list</span></dt><dd><p>Define the min and max bound of each variable to be optimized</p>
+</dd>
+<dt>interface_target<span class="classifier">InterfaceTarget instance</span></dt><dd><p>Contain all information about the board / simulator target</p>
+</dd>
+<dt>inter_values<span class="classifier">IntermediateValues instance</span></dt><dd><p>Contain all intermediate information obtained by pre processing</p>
+</dd>
+<dt>mtt<span class="classifier">string</span></dt><dd><p>Define the mutation type to be chosen in GA</p>
+</dd>
+<dt>mtpg<span class="classifier">list</span></dt><dd><p>Define the percentage of mutation to be used in GA
+If the mutation type is adaptive, then a list containing two values must be passed.</p>
+<blockquote>
+<div><p>The first will be used in the beggining, due to major differences
+The second will be used when the fitness values are closer between generations</p>
+</div></blockquote>
+<p>Else only one value will be utilized during the whole execution</p>
+</dd>
+<dt>num_genes<span class="classifier">int</span></dt><dd><p>Define the length of the input to be optimized</p>
+</dd>
+<dt>pst<span class="classifier">string</span></dt><dd><p>Define the parent selection type to be chosen in GA</p>
+</dd>
+<dt>pygad_instance<span class="classifier">pygad.GA</span></dt><dd><p>Contain all information about the class GA used in PyGaD.
+For more information: <a class="reference external" href="https://pygad.readthedocs.io/en/latest/">https://pygad.readthedocs.io/en/latest/</a></p>
+</dd>
+<dt>stop_criteria<span class="classifier">string</span></dt><dd><p>Define the criteria for previously end the optimization</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.best_solution">
+<span class="sig-name descname"><span class="pre">best_solution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.best_solution" title="Link to this definition">¶</a></dt>
+<dd><p>After the execution of GA, returns the solution.</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>solution<span class="classifier">list</span></dt><dd><p>The list of optimized outputs after the execution of GA</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.filter_output_wpevt">
+<span class="sig-name descname"><span class="pre">filter_output_wpevt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.filter_output_wpevt" title="Link to this definition">¶</a></dt>
+<dd><p>Function to bond the output of path block and create a vector for comparision</p>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>output<span class="classifier">list</span></dt><dd><p>Response of board/simulator</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h4>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>path_blocks<span class="classifier">dict</span></dt><dd><p>Basic block path</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.fitness_dynamic_ga">
+<span class="sig-name descname"><span class="pre">fitness_dynamic_ga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pygad_instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.fitness_dynamic_ga" title="Link to this definition">¶</a></dt>
+<dd><p>Set fitness parameter for methodology Dynamic GA</p>
+<section id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>pygad_instance<span class="classifier">pygad.GA</span></dt><dd><p>Instance of object of Genetic Algorithm</p>
+</dd>
+<dt>solution<span class="classifier">list</span></dt><dd><p>Solution vector of problem</p>
+</dd>
+<dt>solution_idx<span class="classifier">list</span></dt><dd><p>Parameter not used, but Pygad lib needs it</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h4>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>fitness<span class="classifier">int</span></dt><dd><p>Returns the number of execution cycles for the input given</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.fitness_wpevt">
+<span class="sig-name descname"><span class="pre">fitness_wpevt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ga_instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.fitness_wpevt" title="Link to this definition">¶</a></dt>
+<dd><p>Set fitness parameter for methodology Dynamic GA</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>pygad_instance<span class="classifier">pygad.GA</span></dt><dd><p>Instance of object of Genetic Algorithm</p>
+</dd>
+<dt>solution<span class="classifier">list</span></dt><dd><p>Solution vector of problem</p>
+</dd>
+<dt>solution_idx<span class="classifier">list</span></dt><dd><p>Parameter not used, but Pygad lib needs it</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>match<span class="classifier">float</span></dt><dd><p>Returns the percentage of match between the worst path and the path for the input given</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.instanciate_dynamic_ga">
+<span class="sig-name descname"><span class="pre">instanciate_dynamic_ga</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.instanciate_dynamic_ga" title="Link to this definition">¶</a></dt>
+<dd><p>Instanciate the GA for the dynamic methodology</p>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id9">
+<h4>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.instanciate_wpevt_ga">
+<span class="sig-name descname"><span class="pre">instanciate_wpevt_ga</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.instanciate_wpevt_ga" title="Link to this definition">¶</a></dt>
+<dd><p>Instanciate the GA for the WPEVT methodology</p>
+<section id="id10">
+<h4>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id11">
+<h4>Returns<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.print_generations">
+<span class="sig-name descname"><span class="pre">print_generations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pygad_instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GA</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.print_generations" title="Link to this definition">¶</a></dt>
+<dd><p>Print intermediate values in the GA execution.
+Each 10 generations, the generations number, the solution vector and fiteness value obtained until that moment are exhibited.</p>
+<section id="id12">
+<h4>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>pygad_instance<span class="classifier">pygad.GA</span></dt><dd><p>Instance of object of Genetic Algorithm</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h4>Returns<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga.GA.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ga.dynamic_ga.GA.run" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the instanciated GA.</p>
+<section id="id14">
+<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id15">
+<h4>Returns<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-ga.dynamic_ga_facade">
+<span id="ga-dynamic-ga-facade-module"></span><h2>ga.dynamic_ga_facade module<a class="headerlink" href="#module-ga.dynamic_ga_facade" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ga.dynamic_ga_facade.DynamicGaFacade">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ga.dynamic_ga_facade.</span></span><span class="sig-name descname"><span class="pre">DynamicGaFacade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.wcet_data.WcetData" title="utils.wcet_data.WcetData"><span class="pre">WcetData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ga.dynamic_ga_facade.DynamicGaFacade" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for estimating the Worst-Case Execution Time (WCET) of a program.</p>
+<p>This class encapsulates the logic for calculating WCET using the Genetic Algorithm with dynamic measurements.</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Attributes<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about wcet</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ga.dynamic_ga_facade.DynamicGaFacade.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ga.dynamic_ga_facade.DynamicGaFacade.run" title="Link to this definition">¶</a></dt>
+<dd><p>Dynamic GA pipeline for calculate pWCET.</p>
+<section id="id18">
+<h4>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id19">
+<h4>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<span class="target" id="module-ga"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="evt.html" class="btn btn-neutral float-left" title="evt package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="inputs.html" class="btn btn-neutral float-right" title="inputs package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

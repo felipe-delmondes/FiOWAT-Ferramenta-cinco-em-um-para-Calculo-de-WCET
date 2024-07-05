@@ -1,0 +1,50 @@
+
+metadata:
+  project_name: bsort100_evt_riscv
+  c_program_path:
+  project_output:
+  architecture: riscv32
+  vendor: riscv
+  operational_system: none
+  microcontroller_unit: esp32-c3
+
+
+target:
+  board: True
+  usb_port: /dev/ttyACM0
+  flash_board: False
+
+
+
+inputs:
+  chosen_input: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+  types:  [int(100)]
+  bounds_min:  []
+  bounds_max: []
+  gen_method: none
+  n_test_cases: 1
+
+
+run:
+  methods: evt
+  deadline: 0
+  function_target: main
+  report: [pdf]
+
+
+evt:
+  number_exec: 10000
+  pwcet_bounds: [1E-9, 1E-10, 1E-11, 1E-12]
+
+
+ga:
+  parent_selection_type: sss
+  crossover_type: two_points
+  mutation_type: adaptive
+  mutation_percent_genes: [70,15]
+  stop_criteria: True
+
+
+external_libs:
+  llvm_path:
+  cbmc_path:

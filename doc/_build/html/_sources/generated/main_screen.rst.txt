@@ -1,0 +1,7 @@
+main\_screen module
+===================
+
+.. automodule:: main_screen
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,15 @@
+freezegun==1.2.2
+matplotlib==3.7.1
+numpy==1.24.3
+pandas>=2.0.3
+Pillow==9.5.0
+platformio==6.1.11
+progress==1.6
+PuLP==2.7.0
+pygad==3.0.1
+pyserial==3.5
+PyYAML==6.0.1
+reportlab==4.0.4
+scipy>=1.1.0
+statsmodels==0.14.0
+z3-solver==4.10.2.0

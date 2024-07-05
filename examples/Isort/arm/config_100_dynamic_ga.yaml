@@ -1,0 +1,125 @@
+# *** Configuration file ***
+
+#metadata: Information about user project
+# - project_name: User project main C file name, without extensions or dot in filename.
+#   - Example: program
+# - c_program_path: Absolute directory to C file.
+#   - Example: C:\Users\Peter\Desktop\
+# - project_output: Where the user wants create the report file.
+#   - Example: C:\Users\Peter\Documents\
+# More information about triple target: https://llvm.org/doxygen/classllvm_1_1Triple.html
+# - architecture: Target architecture
+#   - Examples: avr, x86_64
+# - vendor: The vendor company
+#   - Examples: atmel, pc, unknown
+# - operational_system: Target operational system
+#   - Examples: none, windows, linux
+# - microcontroller_unit: Target microcontroller
+#   - Examples: atmega328, none
+metadata:
+  project_name:
+  c_program_path:
+  project_output:
+  architecture:
+  vendor:
+  operational_system:
+  microcontroller_unit:
+
+
+#target: Information about the target of analysis, for example: AVR board, ARM simulator, ...
+# - board: The target is a board?
+#   - Options: [True | False]
+#   - Default: True
+# - usb_port: What USB port the board is connected
+#   - Examples: COM1, /dev/ttyACM0
+target:
+  board: True
+  usb_port:
+
+
+#inputs: Inputs to run this program
+# - chosen_input: User selected input
+#   - Example: [], [4, 3, 2, 1, 5, 6, 7, 8, 9, 10]
+# - types: List of input variables types in the same sequence of input values
+#   - Example: [int(15), float, int]
+# - bounds_min: List of input variables bounds min (ordered). If simple variable, pass single number. If array pass list. The range of minimum values is closed
+#   - Example: [-7, 0]
+# - bounds_max: List of input variables bounds max (ordered). If simple variable, pass single number. If array pass list. The range of maximum values is open
+#   - Example: [-2, 10]
+# - gen_method: Choose the input generation technique. This option is just used to code coverage
+#   - Options: [none | random | cbmc]
+# - n_test_cases: Choose how many input values will be generated using input generation component
+#   - Options: x >= 1
+inputs:
+  chosen_input:
+  types: [int]
+  bounds_min: [0]
+  bounds_max: [101]
+  gen_method:
+  n_test_cases:
+
+
+#run: general configurations to run the methodologies
+# - methods: Selected methodology
+#   - Options: [static_ipet | hybrid_ipet | wpevt | dynamic_ga | evt]
+# - deadline: The maximum value that the program may use
+#   - Options: x >= 0
+#   - Default: 0
+# - function_target: Select which function will have its WCET calculated. "main" option is the same thing as calculating the program's WCET
+#   - Example: printf
+#   - Default: main
+# - report: How many report formats will be generated
+#   - Options: [pdf, json]
+#   - Default: [pdf]
+run:
+  methods:
+  deadline: 0
+  function_target: main
+  report: [pdf]
+
+
+#evt: Parameters to EVT component
+# - number_exec: Executions number of program using the same input
+#   - Options: x >= 5000
+#   - Default: 10000
+# - pwcet_bounds: Desired probability of exceedance
+#   - Options: x <= 1E-6 and maximum of 5 elements
+#   - Default: [1E-9, 1E-10, 1E-11, 1E-12]
+evt:
+  number_exec: 10000
+  pwcet_bounds: [1E-9, 1E-10, 1E-11, 1E-12]
+
+
+#ga: Parameters to GA component
+# - parent_selection_type: Technique to choose the parents
+#   - Options: [sss | random | rank | sus | tournament | rws]
+#   - Default: sss
+# - crossover_type: Technique to choose crossover between two individuals
+#   - Options: [two_points | scattered | single_point | uniform]
+#   - Default: two_points
+# - mutation_type: Technique to insert variability in individuals
+#   - Options: [adaptive | inversion | random | scramble | swap]
+#   - Default: adaptive
+# - mutation_percent_genes: Only adaptive option requires list, for other options set one value only
+#   - Examples: [70,15], [30]
+#   - Options: 1 <= x <= 99
+#   - Default: [70,15]
+# - stop_criteria: Stop the evolution using the square of genes number or the cubic of genes number
+#   - Options: [True | False]
+#   - Default: True
+ga:
+  parent_selection_type: sss
+  crossover_type: two_points
+  mutation_type: adaptive
+  mutation_percent_genes: [70,15]
+  stop_criteria: True
+
+
+#external_libs: External tools used by FioWAT
+# - llvm_path: Directory where LLVM is installed. Its value may be null if the enviroment variables is configured
+#   - Examples: , /usr/lib/llvm-16
+# - cbmc_path: Directory where CBMC is installed. Its value may be null if the enviroment variables is configured
+#   - Examples: , /usr/bin/
+external_libs:
+  llvm_path:
+  cbmc_path:

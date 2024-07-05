@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>constraint_solver package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="evt package" href="evt.html" />
+    <link rel="prev" title="cfg package" href="cfg.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">constraint_solver package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-constraint_solver.worst_path">constraint_solver.worst_path module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constraint_solver.worst_path.worst_path_match"><code class="docutils literal notranslate"><span class="pre">worst_path_match()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-constraint_solver.wpevt_facade">constraint_solver.wpevt_facade module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constraint_solver.wpevt_facade.WpevtFacade"><code class="docutils literal notranslate"><span class="pre">WpevtFacade</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constraint_solver.wpevt_facade.maketrans"><code class="docutils literal notranslate"><span class="pre">maketrans()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">constraint_solver package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/constraint_solver.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="constraint-solver-package">
+<h1>constraint_solver package<a class="headerlink" href="#constraint-solver-package" title="Link to this heading">¶</a></h1>
+<section id="module-constraint_solver.worst_path">
+<span id="constraint-solver-worst-path-module"></span><h2>constraint_solver.worst_path module<a class="headerlink" href="#module-constraint_solver.worst_path" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="constraint_solver.worst_path.worst_path_match">
+<span class="sig-prename descclassname"><span class="pre">constraint_solver.worst_path.</span></span><span class="sig-name descname"><span class="pre">worst_path_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.intermediate_values.IntermediateValues" title="utils.intermediate_values.IntermediateValues"><span class="pre">IntermediateValues</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">coverage_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#constraint_solver.worst_path.worst_path_match" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the percentage match between calculated worst path and concrete execution</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>DTO with worst path</p>
+</dd>
+<dt>coverage_code<span class="classifier">dict</span></dt><dd><p>Dictionary with number of executions of all basic blocks (Except main function).</p>
+<p>Basic blocks with 0 executions times not appear here.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>match_percentage<span class="classifier">float</span></dt><dd><p>How many the execution match with calculated worst path.
+This value range is between 0 and 1</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-constraint_solver.wpevt_facade">
+<span id="constraint-solver-wpevt-facade-module"></span><h2>constraint_solver.wpevt_facade module<a class="headerlink" href="#module-constraint_solver.wpevt_facade" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="constraint_solver.wpevt_facade.WpevtFacade">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">constraint_solver.wpevt_facade.</span></span><span class="sig-name descname"><span class="pre">WpevtFacade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">wcet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.wcet_data.WcetData" title="utils.wcet_data.WcetData"><span class="pre">WcetData</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#constraint_solver.wpevt_facade.WpevtFacade" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for estimating the Worst-Case Execution Time (WCET) of a program using Worst Path EVT.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about wcet</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="constraint_solver.wpevt_facade.WpevtFacade.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#constraint_solver.wpevt_facade.WpevtFacade.run" title="Link to this definition">¶</a></dt>
+<dd><p>Run Worst Path EVT for find pWCET and sWCET.</p>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id3">
+<h4>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="constraint_solver.wpevt_facade.maketrans">
+<span class="sig-prename descclassname"><span class="pre">constraint_solver.wpevt_facade.</span></span><span class="sig-name descname"><span class="pre">maketrans</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#constraint_solver.wpevt_facade.maketrans" title="Link to this definition">¶</a></dt>
+<dd><p>Return a translation table usable for str.translate().</p>
+<p>If there is only one argument, it must be a dictionary mapping Unicode
+ordinals (integers) or characters to Unicode ordinals, strings or None.
+Character keys will be then converted to ordinals.
+If there are two arguments, they must be strings of equal length, and
+in the resulting dictionary, each character in x will be mapped to the
+character at the same position in y. If there is a third argument, it
+must be a string, whose characters will be mapped to None in the result.</p>
+</dd></dl>
+
+<span class="target" id="module-constraint_solver"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cfg.html" class="btn btn-neutral float-left" title="cfg package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="evt.html" class="btn btn-neutral float-right" title="evt package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>interface_target package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ipet package" href="ipet.html" />
+    <link rel="prev" title="inputs package" href="inputs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">interface_target package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-interface_target.avr">interface_target.avr module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.avr.Avr"><code class="docutils literal notranslate"><span class="pre">Avr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.avr.AvrBoard"><code class="docutils literal notranslate"><span class="pre">AvrBoard</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.avr.AvrSimulator"><code class="docutils literal notranslate"><span class="pre">AvrSimulator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-interface_target.i_target">interface_target.i_target module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.i_target.ITarget"><code class="docutils literal notranslate"><span class="pre">ITarget</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-interface_target.interface_target">interface_target.interface_target module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.interface_target.InterfaceTarget"><code class="docutils literal notranslate"><span class="pre">InterfaceTarget</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-interface_target.riscv">interface_target.riscv module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.riscv.Riscv"><code class="docutils literal notranslate"><span class="pre">Riscv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.riscv.RiscvBoard"><code class="docutils literal notranslate"><span class="pre">RiscvBoard</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-interface_target.target_means">interface_target.target_means module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.target_means.Board"><code class="docutils literal notranslate"><span class="pre">Board</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interface_target.target_means.Simulator"><code class="docutils literal notranslate"><span class="pre">Simulator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">interface_target package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/interface_target.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interface-target-package">
+<h1>interface_target package<a class="headerlink" href="#interface-target-package" title="Link to this heading">¶</a></h1>
+<section id="module-interface_target.avr">
+<span id="interface-target-avr-module"></span><h2>interface_target.avr module<a class="headerlink" href="#module-interface_target.avr" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.avr.Avr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.avr.</span></span><span class="sig-name descname"><span class="pre">Avr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.avr.Avr" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#interface_target.i_target.ITarget" title="interface_target.i_target.ITarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITarget</span></code></a></p>
+<p>Create the same interface and common pipeline to AVR architecture</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project</p>
+</dd>
+</dl>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>output_path<span class="classifier">str</span></dt><dd><p>Directory where report will be generated and its name</p>
+</dd>
+<dt>mmcu<span class="classifier">str</span></dt><dd><p>Microcontroller of target. Example: atmega328, unknown</p>
+</dd>
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Serial port to connect with board</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.Avr.compile_to_elf">
+<span class="sig-name descname"><span class="pre">compile_to_elf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.avr.Avr.compile_to_elf" title="Link to this definition">¶</a></dt>
+<dd><p>Compile object file to elf file in AVR board</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.Avr.compile_to_hex">
+<span class="sig-name descname"><span class="pre">compile_to_hex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.avr.Avr.compile_to_hex" title="Link to this definition">¶</a></dt>
+<dd><p>Compile elf file to hex file in AVR board</p>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id3">
+<h4>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.avr.AvrBoard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.avr.</span></span><span class="sig-name descname"><span class="pre">AvrBoard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.avr.AvrBoard" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#interface_target.target_means.Board" title="interface_target.target_means.Board"><code class="xref py py-class docutils literal notranslate"><span class="pre">Board</span></code></a>, <a class="reference internal" href="#interface_target.avr.Avr" title="interface_target.avr.Avr"><code class="xref py py-class docutils literal notranslate"><span class="pre">Avr</span></code></a></p>
+<p>Control AVR board pipeline</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Attributes<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>output_path<span class="classifier">str</span></dt><dd><p>Directory where report will be generated and its name</p>
+</dd>
+<dt>mmcu<span class="classifier">str</span></dt><dd><p>Microcontroller of target. Example: atmega328, unknown</p>
+</dd>
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Serial port to connect with board</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.AvrBoard.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.avr.AvrBoard.compile" title="Link to this definition">¶</a></dt>
+<dd><p>Compile object file to AVR board executable</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.AvrBoard.flash">
+<span class="sig-name descname"><span class="pre">flash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.avr.AvrBoard.flash" title="Link to this definition">¶</a></dt>
+<dd><p>Load the hex file to board</p>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id9">
+<h4>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.AvrBoard.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#interface_target.avr.AvrBoard.run" title="Link to this definition">¶</a></dt>
+<dd><p>Execute once the program with input set</p>
+<section id="id10">
+<h4>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>input<span class="classifier">list</span></dt><dd><p>Input values of one execution</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h4>Returns<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>output<span class="classifier">list</span></dt><dd><p>Response of board</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.avr.AvrSimulator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.avr.</span></span><span class="sig-name descname"><span class="pre">AvrSimulator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.avr.AvrSimulator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#interface_target.target_means.Simulator" title="interface_target.target_means.Simulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Simulator</span></code></a>, <a class="reference internal" href="#interface_target.avr.Avr" title="interface_target.avr.Avr"><code class="xref py py-class docutils literal notranslate"><span class="pre">Avr</span></code></a></p>
+<p>Control AVR simulator pipeline</p>
+<section id="id12">
+<h3>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h3>Attributes<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>output_path<span class="classifier">str</span></dt><dd><p>Directory where report will be generated and its name</p>
+</dd>
+<dt>mmcu<span class="classifier">str</span></dt><dd><p>Microcontroller of target. Example: atmega328, unknown</p>
+</dd>
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Serial port to connect with board</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.AvrSimulator.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.avr.AvrSimulator.compile" title="Link to this definition">¶</a></dt>
+<dd><p>Compile object file to AVR simulator executable</p>
+<section id="id14">
+<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id15">
+<h4>Returns<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.AvrSimulator.flash">
+<span class="sig-name descname"><span class="pre">flash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.avr.AvrSimulator.flash" title="Link to this definition">¶</a></dt>
+<dd><p>Do anything, because it’s not necessary load the executable file to simulator.</p>
+<p>It’s method allow the class has the same interface</p>
+<section id="id16">
+<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id17">
+<h4>Returns<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.avr.AvrSimulator.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#interface_target.avr.AvrSimulator.run" title="Link to this definition">¶</a></dt>
+<dd><p>Execute once the program with input set</p>
+<section id="id18">
+<h4>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>input<span class="classifier">list</span></dt><dd><p>Input values of one execution</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h4>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>output<span class="classifier">list</span></dt><dd><p>Response of AVR simulator</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-interface_target.i_target">
+<span id="interface-target-i-target-module"></span><h2>interface_target.i_target module<a class="headerlink" href="#module-interface_target.i_target" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.i_target.ITarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.i_target.</span></span><span class="sig-name descname"><span class="pre">ITarget</span></span><a class="headerlink" href="#interface_target.i_target.ITarget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Define Interface for all boards and simulators used in InterfaceTarget class.</p>
+<p>If one concrete class not implement this interface, raise “NotImplementedError” exception.</p>
+<section id="id20">
+<h3>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id21">
+<h3>Attributes<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.i_target.ITarget.compile">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.i_target.ITarget.compile" title="Link to this definition">¶</a></dt>
+<dd><p>All targets must implement compile method. This method is for compile this source code to architecture target.</p>
+<section id="id22">
+<h4>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id23">
+<h4>Returns<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.i_target.ITarget.flash">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.i_target.ITarget.flash" title="Link to this definition">¶</a></dt>
+<dd><p>All targets must implement flash method. This method is for load the program in board.</p>
+<p>If simulator not needs this method, just use “pass” instruction.</p>
+<section id="id24">
+<h4>Parameters<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id25">
+<h4>Returns<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.i_target.ITarget.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.i_target.ITarget.run" title="Link to this definition">¶</a></dt>
+<dd><p>All targets must implement run method. This method is for execute the program in target.</p>
+<section id="id26">
+<h4>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id27">
+<h4>Returns<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-interface_target.interface_target">
+<span id="interface-target-interface-target-module"></span><h2>interface_target.interface_target module<a class="headerlink" href="#module-interface_target.interface_target" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.interface_target.</span></span><span class="sig-name descname"><span class="pre">InterfaceTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Apply adapter pattern, to allow all methodologies using the same point to connect with boards and simulators</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project</p>
+</dd>
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Attributes<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project</p>
+</dd>
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+<dt>arch<span class="classifier">str</span></dt><dd><p>Architecture of target. Example: arm, avr, riscv</p>
+</dd>
+<dt>vendor<span class="classifier">str</span></dt><dd><p>Vendor of target. Example: pc, atmel</p>
+</dd>
+<dt>os<span class="classifier">str</span></dt><dd><p>Operational system of target. Example: none, windows, linux</p>
+</dd>
+<dt>mmcu<span class="classifier">str</span></dt><dd><p>Microcontroller of target. Example: atmega328, unknown</p>
+</dd>
+<dt>llvm_path<span class="classifier">str</span></dt><dd><p>Directory where LLVM 16 is installed</p>
+</dd>
+<dt>input_file<span class="classifier">str</span></dt><dd><p>Directory where main file is located and its name</p>
+</dd>
+<dt>output_file<span class="classifier">str</span></dt><dd><p>Directory where report will be generated and its name</p>
+</dd>
+<dt>bin<span class="classifier">str</span></dt><dd><p>Directory of bin folder of this repository</p>
+</dd>
+<dt>env<span class="classifier">str</span></dt><dd><p>Define it is “board” or “simul”</p>
+</dd>
+<dt>communicator<span class="classifier">ITarget</span></dt><dd><p>Object of Strategy Pattern, responsible to execute methods of selected board</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.backend_compile">
+<span class="sig-name descname"><span class="pre">backend_compile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.backend_compile" title="Link to this definition">¶</a></dt>
+<dd><p>Compile IR file to binary file of selected target</p>
+<section id="id30">
+<h4>Parameters<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id31">
+<h4>Returns<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.compile_io_ports">
+<span class="sig-name descname"><span class="pre">compile_io_ports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.compile_io_ports" title="Link to this definition">¶</a></dt>
+<dd><p>Compile with IO ports</p>
+<section id="id32">
+<h4>Parameters<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id33">
+<h4>Returns<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.compile_tick_counter">
+<span class="sig-name descname"><span class="pre">compile_tick_counter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.compile_tick_counter" title="Link to this definition">¶</a></dt>
+<dd><p>Compile with tick counter</p>
+<section id="id34">
+<h4>Parameters<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id35">
+<h4>Returns<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.compile_to_asm">
+<span class="sig-name descname"><span class="pre">compile_to_asm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.compile_to_asm" title="Link to this definition">¶</a></dt>
+<dd><p>Compile IR file to assembly file</p>
+<section id="id36">
+<h4>Parameters<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id37">
+<h4>Returns<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.compile_to_ir">
+<span class="sig-name descname"><span class="pre">compile_to_ir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.compile_to_ir" title="Link to this definition">¶</a></dt>
+<dd><p>Compile to IR file</p>
+<section id="id38">
+<h4>Parameters<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id39">
+<h4>Returns<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.compile_to_obj">
+<span class="sig-name descname"><span class="pre">compile_to_obj</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.compile_to_obj" title="Link to this definition">¶</a></dt>
+<dd><p>Compile IR file to object file</p>
+<section id="id40">
+<h4>Parameters<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id41">
+<h4>Returns<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.flash">
+<span class="sig-name descname"><span class="pre">flash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.flash" title="Link to this definition">¶</a></dt>
+<dd><p>Load the binary file to board</p>
+<section id="id42">
+<h4>Parameters<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id43">
+<h4>Returns<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.flatten">
+<span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.flatten" title="Link to this definition">¶</a></dt>
+<dd><p>Convert the input set to a format readable for board or simulator</p>
+<section id="id44">
+<h4>Parameters<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h4>
+<dl>
+<dt>args<span class="classifier">list</span></dt><dd><p>Input set of one execution, possible with list inside of list.</p>
+<p>Example: [2, 3, [4, 5, 1], 2]</p>
+</dd>
+</dl>
+</section>
+<section id="id45">
+<h4>Returns<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h4>
+<dl>
+<dt>input<span class="classifier">list</span></dt><dd><p>Input values of one execution in unique list.</p>
+<p>Example: [2, 3, 4, 5, 1, 2]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.init_avr_communicator">
+<span class="sig-name descname"><span class="pre">init_avr_communicator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.init_avr_communicator" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize communication with AVR board or simulator</p>
+<section id="id46">
+<h4>Parameters<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id47">
+<h4>Returns<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.init_risc_communicator">
+<span class="sig-name descname"><span class="pre">init_risc_communicator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.init_risc_communicator" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize communication with RISC board or simulator</p>
+<section id="id48">
+<h4>Parameters<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id49">
+<h4>Returns<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.instrument_ipet_hybrid">
+<span class="sig-name descname"><span class="pre">instrument_ipet_hybrid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.instrument_ipet_hybrid" title="Link to this definition">¶</a></dt>
+<dd><p>Instrument basic blocks using opt pass in the IR file</p>
+<section id="id50">
+<h4>Parameters<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id51">
+<h4>Returns<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.instrument_wpevt">
+<span class="sig-name descname"><span class="pre">instrument_wpevt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.instrument_wpevt" title="Link to this definition">¶</a></dt>
+<dd><p>Use opt pass in the IR file of WPEVT methodology</p>
+<section id="id52">
+<h4>Parameters<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id53">
+<h4>Returns<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.link">
+<span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.link" title="Link to this definition">¶</a></dt>
+<dd><p>Link main IR file with external libs</p>
+<section id="id54">
+<h4>Parameters<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id55">
+<h4>Returns<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.run" title="Link to this definition">¶</a></dt>
+<dd><p>Receive the input set and run the board or simulator</p>
+<section id="id56">
+<h4>Parameters<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h4>
+<dl>
+<dt>args<span class="classifier">list</span></dt><dd><p>Input set of one execution, possible with list inside of list.</p>
+<p>Example: [2, 3, [4, 5, 1], 2]</p>
+</dd>
+</dl>
+</section>
+<section id="id57">
+<h4>Returns<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>response<span class="classifier">list</span></dt><dd><p>Result of execution</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.set_ga_filenames">
+<span class="sig-name descname"><span class="pre">set_ga_filenames</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.set_ga_filenames" title="Link to this definition">¶</a></dt>
+<dd><p>Define file name for GA technique</p>
+<section id="id58">
+<h4>Parameters<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id59">
+<h4>Returns<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.set_ir">
+<span class="sig-name descname"><span class="pre">set_ir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.set_ir" title="Link to this definition">¶</a></dt>
+<dd><p>Read IR file</p>
+<section id="id60">
+<h4>Parameters<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id61">
+<h4>Returns<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.interface_target.InterfaceTarget.setup_ipet_hybrid">
+<span class="sig-name descname"><span class="pre">setup_ipet_hybrid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.interface_target.InterfaceTarget.setup_ipet_hybrid" title="Link to this definition">¶</a></dt>
+<dd><p>Setup opt pass in IR file</p>
+<section id="id62">
+<h4>Parameters<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id63">
+<h4>Returns<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-interface_target.riscv">
+<span id="interface-target-riscv-module"></span><h2>interface_target.riscv module<a class="headerlink" href="#module-interface_target.riscv" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.riscv.Riscv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.riscv.</span></span><span class="sig-name descname"><span class="pre">Riscv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.riscv.Riscv" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#interface_target.i_target.ITarget" title="interface_target.i_target.ITarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITarget</span></code></a></p>
+<p>Create the same interface and common pipeline to RISC-V architecture</p>
+<section id="id64">
+<h3>Parameters<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project</p>
+</dd>
+</dl>
+</section>
+<section id="id65">
+<h3>Attributes<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>output_path<span class="classifier">str</span></dt><dd><p>Directory where report will be generated and its name</p>
+</dd>
+<dt>mmcu<span class="classifier">str</span></dt><dd><p>Microcontroller of target. Example: atmega328, unknown</p>
+</dd>
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Serial port to connect with board</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.riscv.RiscvBoard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.riscv.</span></span><span class="sig-name descname"><span class="pre">RiscvBoard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.riscv.RiscvBoard" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#interface_target.target_means.Board" title="interface_target.target_means.Board"><code class="xref py py-class docutils literal notranslate"><span class="pre">Board</span></code></a>, <a class="reference internal" href="#interface_target.riscv.Riscv" title="interface_target.riscv.Riscv"><code class="xref py py-class docutils literal notranslate"><span class="pre">Riscv</span></code></a></p>
+<p>Control RISC-V board pipeline</p>
+<section id="id66">
+<h3>Parameters<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>All informations about user project</p>
+</dd>
+</dl>
+</section>
+<section id="id67">
+<h3>Attributes<a class="headerlink" href="#id67" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>output_path<span class="classifier">str</span></dt><dd><p>Directory where report will be generated and its name</p>
+</dd>
+<dt>mmcu<span class="classifier">str</span></dt><dd><p>Microcontroller of target. Example: atmega328, unknown</p>
+</dd>
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Serial port to connect with board</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.riscv.RiscvBoard.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.riscv.RiscvBoard.compile" title="Link to this definition">¶</a></dt>
+<dd><p>Compile object file to RISC-V board executable</p>
+<section id="id68">
+<h4>Parameters<a class="headerlink" href="#id68" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id69">
+<h4>Returns<a class="headerlink" href="#id69" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.riscv.RiscvBoard.flash">
+<span class="sig-name descname"><span class="pre">flash</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.riscv.RiscvBoard.flash" title="Link to this definition">¶</a></dt>
+<dd><p>Load the hex file to board</p>
+<section id="id70">
+<h4>Parameters<a class="headerlink" href="#id70" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id71">
+<h4>Returns<a class="headerlink" href="#id71" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.riscv.RiscvBoard.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#interface_target.riscv.RiscvBoard.run" title="Link to this definition">¶</a></dt>
+<dd><p>Execute once the program with input set</p>
+<section id="id72">
+<h4>Parameters<a class="headerlink" href="#id72" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>input<span class="classifier">list</span></dt><dd><p>Input values of one execution</p>
+</dd>
+</dl>
+</section>
+<section id="id73">
+<h4>Returns<a class="headerlink" href="#id73" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>output<span class="classifier">list</span></dt><dd><p>Response of board</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-interface_target.target_means">
+<span id="interface-target-target-means-module"></span><h2>interface_target.target_means module<a class="headerlink" href="#module-interface_target.target_means" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.target_means.Board">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.target_means.</span></span><span class="sig-name descname"><span class="pre">Board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serial_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#interface_target.target_means.Board" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Communicate with board</p>
+<section id="id74">
+<h3>Parameters<a class="headerlink" href="#id74" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Serial port where board is connected</p>
+</dd>
+</dl>
+</section>
+<section id="id75">
+<h3>Attributes<a class="headerlink" href="#id75" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>serial_port<span class="classifier">str</span></dt><dd><p>Serial port where board is connected</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.target_means.Board.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#interface_target.target_means.Board.run" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the program in a board</p>
+<section id="id76">
+<h4>Parameters<a class="headerlink" href="#id76" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>args<span class="classifier">list, default = []</span></dt><dd><p>Input set to execute the program</p>
+</dd>
+</dl>
+</section>
+<section id="id77">
+<h4>Returns<a class="headerlink" href="#id77" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>output<span class="classifier">list</span></dt><dd><p>Set of prints, with response of execution</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="interface_target.target_means.Simulator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">interface_target.target_means.</span></span><span class="sig-name descname"><span class="pre">Simulator</span></span><a class="headerlink" href="#interface_target.target_means.Simulator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Communicate with simulator</p>
+<section id="id78">
+<h3>Parameters<a class="headerlink" href="#id78" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id79">
+<h3>Attributes<a class="headerlink" href="#id79" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="interface_target.target_means.Simulator.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#interface_target.target_means.Simulator.run" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the program in a simulator</p>
+<section id="id80">
+<h4>Parameters<a class="headerlink" href="#id80" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id81">
+<h4>Returns<a class="headerlink" href="#id81" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<span class="target" id="module-interface_target"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="inputs.html" class="btn btn-neutral float-left" title="inputs package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ipet.html" class="btn btn-neutral float-right" title="ipet package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

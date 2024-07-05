@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pipeline package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="report_generator package" href="report_generator.html" />
+    <link rel="prev" title="main module" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pipeline package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-pipeline.config_parser">pipeline.config_parser module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.config_parser.ConfigParser"><code class="docutils literal notranslate"><span class="pre">ConfigParser</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pipeline.director">pipeline.director module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.director.Director"><code class="docutils literal notranslate"><span class="pre">Director</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pipeline.wcet_methodologies">pipeline.wcet_methodologies module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.wcet_methodologies.DynamicGa"><code class="docutils literal notranslate"><span class="pre">DynamicGa</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.wcet_methodologies.Evt"><code class="docutils literal notranslate"><span class="pre">Evt</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.wcet_methodologies.HybridIpet"><code class="docutils literal notranslate"><span class="pre">HybridIpet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.wcet_methodologies.StaticIpet"><code class="docutils literal notranslate"><span class="pre">StaticIpet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.wcet_methodologies.WcetBuilder"><code class="docutils literal notranslate"><span class="pre">WcetBuilder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline.wcet_methodologies.Wpevt"><code class="docutils literal notranslate"><span class="pre">Wpevt</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">pipeline package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/pipeline.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pipeline-package">
+<h1>pipeline package<a class="headerlink" href="#pipeline-package" title="Link to this heading">¶</a></h1>
+<section id="module-pipeline.config_parser">
+<span id="pipeline-config-parser-module"></span><h2>pipeline.config_parser module<a class="headerlink" href="#module-pipeline.config_parser" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.config_parser.ConfigParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.config_parser.</span></span><span class="sig-name descname"><span class="pre">ConfigParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_yaml</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.config_parser.ConfigParser" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Reading, filter and update the UserProject using informations of config.yaml.</p>
+<p>Also, create new folder to this WCET analysis.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>__path_yaml<span class="classifier">str</span></dt><dd><p>Directory of config.yaml file of current analysis</p>
+</dd>
+<dt>__config<span class="classifier">dict</span></dt><dd><p>All information read of config.yaml</p>
+</dd>
+<dt>methodology<span class="classifier">str</span></dt><dd><p>The methodology name. The valid options are declared in the VALID_METHODOLOGIES constant</p>
+</dd>
+<dt>user_project<span class="classifier">UserProject</span></dt><dd><p>DTO if contain all information to the next components</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.config_parser.ConfigParser.create_output_folder">
+<span class="sig-name descname"><span class="pre">create_output_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.config_parser.ConfigParser.create_output_folder" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new output folder for this execution, so it’s possible prevent files from being overwritten</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.config_parser.ConfigParser.filter_and_create_user_project">
+<span class="sig-name descname"><span class="pre">filter_and_create_user_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.config_parser.ConfigParser.filter_and_create_user_project" title="Link to this definition">¶</a></dt>
+<dd><p>Check the values of config.yaml and create the DTO UserProject with common values for all methodologies</p>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id3">
+<h4>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.config_parser.ConfigParser.filter_values_of_one_methodology">
+<span class="sig-name descname"><span class="pre">filter_values_of_one_methodology</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pipeline.config_parser.ConfigParser.filter_values_of_one_methodology" title="Link to this definition">¶</a></dt>
+<dd><p>Check the values of config.yaml for one methodology. The others values can be ignored.</p>
+<section id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id5">
+<h4>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.config_parser.ConfigParser.open_yaml_file">
+<span class="sig-name descname"><span class="pre">open_yaml_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.config_parser.ConfigParser.open_yaml_file" title="Link to this definition">¶</a></dt>
+<dd><p>Open the config.yaml file and check if any errors occur</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.config_parser.ConfigParser.run_config_parser">
+<span class="sig-name descname"><span class="pre">run_config_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.config_parser.ConfigParser.run_config_parser" title="Link to this definition">¶</a></dt>
+<dd><p>Façade to config.yaml reading pipeline.</p>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id9">
+<h4>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-pipeline.director">
+<span id="pipeline-director-module"></span><h2>pipeline.director module<a class="headerlink" href="#module-pipeline.director" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.director.Director">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.director.</span></span><span class="sig-name descname"><span class="pre">Director</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.director.Director" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Control the instantiation process of specific methodology</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>config_path<span class="classifier">str</span></dt><dd><p>Absolute directory of config.yaml file. Example: C:UsersMarioDesktopconfig.yaml</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h3>Attributes<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>__config_parser<span class="classifier">ConfigParser</span></dt><dd><p>Object responsible to reading and check the config.yaml file</p>
+</dd>
+<dt>methodology_facade<span class="classifier">WcetBuilder</span></dt><dd><p>Pointer to an object that represent specific methodology</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.director.Director.run_pipeline">
+<span class="sig-name descname"><span class="pre">run_pipeline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.director.Director.run_pipeline" title="Link to this definition">¶</a></dt>
+<dd><p>Façade to run the pipeline of selected methodology.</p>
+<section id="id12">
+<h4>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id13">
+<h4>Returns<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-pipeline.wcet_methodologies">
+<span id="pipeline-wcet-methodologies-module"></span><h2>pipeline.wcet_methodologies module<a class="headerlink" href="#module-pipeline.wcet_methodologies" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.DynamicGa">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.wcet_methodologies.</span></span><span class="sig-name descname"><span class="pre">DynamicGa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.DynamicGa" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pipeline.wcet_methodologies.WcetBuilder" title="pipeline.wcet_methodologies.WcetBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WcetBuilder</span></code></a></p>
+<p>Class for organize the pipeline of methodology Dynamic Ga.</p>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Attributes<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about WCET</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.DynamicGa.run_procedure">
+<span class="sig-name descname"><span class="pre">run_procedure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.DynamicGa.run_procedure" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the pipeline of Dynamic Ga and calculate the pWCET.</p>
+<section id="id16">
+<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id17">
+<h4>Returns<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.Evt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.wcet_methodologies.</span></span><span class="sig-name descname"><span class="pre">Evt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.Evt" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pipeline.wcet_methodologies.WcetBuilder" title="pipeline.wcet_methodologies.WcetBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WcetBuilder</span></code></a></p>
+<p>Class for organize the pipeline of methodology EVT.</p>
+<section id="id18">
+<h3>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h3>Attributes<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about WCET</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.Evt.run_procedure">
+<span class="sig-name descname"><span class="pre">run_procedure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.Evt.run_procedure" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the pipeline of EVT and calculate the pWCET.</p>
+<section id="id20">
+<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id21">
+<h4>Returns<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.HybridIpet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.wcet_methodologies.</span></span><span class="sig-name descname"><span class="pre">HybridIpet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.HybridIpet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pipeline.wcet_methodologies.WcetBuilder" title="pipeline.wcet_methodologies.WcetBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WcetBuilder</span></code></a></p>
+<p>Class for organize the pipeline of methodology Hybrid IPET.</p>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h3>Attributes<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about WCET</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.HybridIpet.run_procedure">
+<span class="sig-name descname"><span class="pre">run_procedure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.HybridIpet.run_procedure" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the pipeline of Hybrid IPET and calculate the sWCET.</p>
+<section id="id24">
+<h4>Parameters<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id25">
+<h4>Returns<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.StaticIpet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.wcet_methodologies.</span></span><span class="sig-name descname"><span class="pre">StaticIpet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.StaticIpet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pipeline.wcet_methodologies.WcetBuilder" title="pipeline.wcet_methodologies.WcetBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WcetBuilder</span></code></a></p>
+<p>Class for organize the pipeline of methodology Static IPET.</p>
+<section id="id26">
+<h3>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h3>Attributes<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about WCET</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.StaticIpet.run_procedure">
+<span class="sig-name descname"><span class="pre">run_procedure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.StaticIpet.run_procedure" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the pipeline of Static IPET and calculate the sWCET.</p>
+<section id="id28">
+<h4>Parameters<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id29">
+<h4>Returns<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.WcetBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.wcet_methodologies.</span></span><span class="sig-name descname"><span class="pre">WcetBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.WcetBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Create the same interface for all methodologies.</p>
+<section id="id30">
+<h3>Parameters<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id31">
+<h3>Attributes<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.WcetBuilder.generate_results">
+<span class="sig-name descname"><span class="pre">generate_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.WcetBuilder.generate_results" title="Link to this definition">¶</a></dt>
+<dd><p>All Methodologies must implement generate_results method. This method is used to generate report file.</p>
+<section id="id32">
+<h4>Parameters<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id33">
+<h4>Returns<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.WcetBuilder.run_procedure">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_procedure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.WcetBuilder.run_procedure" title="Link to this definition">¶</a></dt>
+<dd><p>All Methodologies must implement run_procedure method. This method is used to execute the methodology pipeline.</p>
+<p>If one concrete class not implement this interface, raise “NotImplementedError” exception.</p>
+<section id="id34">
+<h4>Parameters<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id35">
+<h4>Returns<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.Wpevt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pipeline.wcet_methodologies.</span></span><span class="sig-name descname"><span class="pre">Wpevt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.Wpevt" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pipeline.wcet_methodologies.WcetBuilder" title="pipeline.wcet_methodologies.WcetBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WcetBuilder</span></code></a></p>
+<p>Class for organize the pipeline of methodology Worst Path EVT.</p>
+<section id="id36">
+<h3>Parameters<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="id37">
+<h3>Attributes<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>wcet<span class="classifier">WcetData</span></dt><dd><p>Contain all information about WCET</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pipeline.wcet_methodologies.Wpevt.run_procedure">
+<span class="sig-name descname"><span class="pre">run_procedure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pipeline.wcet_methodologies.Wpevt.run_procedure" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the pipeline of Worst Path EVT and calculate the sWCET and pWCET.</p>
+<section id="id38">
+<h4>Parameters<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id39">
+<h4>Returns<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<span class="target" id="module-pipeline"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="main module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="report_generator.html" class="btn btn-neutral float-right" title="report_generator package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

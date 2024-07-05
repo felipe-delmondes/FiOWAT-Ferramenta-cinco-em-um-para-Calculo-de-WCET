@@ -1,0 +1,21 @@
+.. title:: User guide : contents
+
+.. _user_guide:
+
+==================================================
+User guide: using the FiOWAT
+==================================================
+
+The central class for FiOWAT is the Wcet class.
+
+To use FiOWAT, first import it as::
+
+    >>> from FiOWAT import Wcet
+
+Once imported, you can create a instance of FiOWAT and estimate the WCET.
+
+    >>> project = UserProject("testellvm", r"C:\Users\Lucas\Desktop\x", r"C:\Users\Lucas\Desktop\x\output", 500, "x86_64", "pc", "windows", "unknown")
+    ... wcet = Wcet(0)
+    ... wcet_calculator = Methodologies(project, wcet)
+    ... wcet_calculator.calculate_wcet()
+

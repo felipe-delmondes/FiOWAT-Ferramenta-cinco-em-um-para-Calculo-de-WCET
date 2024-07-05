@@ -1,0 +1,7 @@
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/WpevtPass-build/CMakeFiles/intrinsics_gen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/WpevtPass-build/CMakeFiles/omp_gen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/WpevtPass-build/CMakeFiles/acc_gen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/WpevtPass-build/CMakeFiles/RISCVTargetParserTableGen.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/WpevtPass-build/CMakeFiles/WpevtPass.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/WpevtPass-build/CMakeFiles/edit_cache.dir
+/home/munak98/Documents/TCC-PES/bin/llvm_plugin/WpevtPass-build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>inputs package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="interface_target package" href="interface_target.html" />
+    <link rel="prev" title="ga package" href="ga.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfg.html">cfg package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">inputs package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-inputs.generators">inputs.generators module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs.generators.CBMCInputGenerator"><code class="docutils literal notranslate"><span class="pre">CBMCInputGenerator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inputs.generators.RandomInputGenerator"><code class="docutils literal notranslate"><span class="pre">RandomInputGenerator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-inputs.input_manager">inputs.input_manager module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs.input_manager.InputManager"><code class="docutils literal notranslate"><span class="pre">InputManager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inputs.input_manager.Variable"><code class="docutils literal notranslate"><span class="pre">Variable</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">inputs package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/inputs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inputs-package">
+<h1>inputs package<a class="headerlink" href="#inputs-package" title="Link to this heading">¶</a></h1>
+<section id="module-inputs.generators">
+<span id="inputs-generators-module"></span><h2>inputs.generators module<a class="headerlink" href="#module-inputs.generators" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="inputs.generators.CBMCInputGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inputs.generators.</span></span><span class="sig-name descname"><span class="pre">CBMCInputGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inputs.generators.CBMCInputGenerator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generate inputs for code coverage using CBMC tool.</p>
+<p>This tool needs source code with instructions that allow using symbolic execution</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+</dl>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>file<span class="classifier">str</span></dt><dd><p>Absolute directory to source code file modified for CBMC tool</p>
+</dd>
+<dt>cbmc_path<span class="classifier">str</span></dt><dd><p>Absolute directory to CBMC tool</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.generators.CBMCInputGenerator.parse_cbmc_output">
+<span class="sig-name descname"><span class="pre">parse_cbmc_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmbc_output</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#inputs.generators.CBMCInputGenerator.parse_cbmc_output" title="Link to this definition">¶</a></dt>
+<dd><p>Receive CBMC test cases for code coverage</p>
+<section id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>test_cases_list<span class="classifier">list</span></dt><dd><p>Set of set of input for multiples executions</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.generators.CBMCInputGenerator.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span></span></span><a class="headerlink" href="#inputs.generators.CBMCInputGenerator.run" title="Link to this definition">¶</a></dt>
+<dd><p>Run the CBMC tool for find input values for code coverage</p>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id3">
+<h4>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>test_cases_list<span class="classifier">set</span></dt><dd><p>Set of set of input for multiples executions</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inputs.generators.RandomInputGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inputs.generators.</span></span><span class="sig-name descname"><span class="pre">RandomInputGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_cases</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inputs.generators.RandomInputGenerator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generate random inputs for code coverage</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>variables<span class="classifier">Variables</span></dt><dd><p>Contain all bounds and types of each input variable</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Attributes<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>rng<span class="classifier">Numpy</span></dt><dd><p>Range of pseudorandom values</p>
+</dd>
+<dt>variables<span class="classifier">Variables</span></dt><dd><p>Contain all bounds and types of each input variable</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.generators.RandomInputGenerator.generate_random_input">
+<span class="sig-name descname"><span class="pre">generate_random_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#inputs.generators.RandomInputGenerator.generate_random_input" title="Link to this definition">¶</a></dt>
+<dd><p>Create pseudorandom values to create an set of input for one execution</p>
+<section id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>random_input<span class="classifier">list</span></dt><dd><p>Set of input for one execution</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.generators.RandomInputGenerator.generate_random_type">
+<span class="sig-name descname"><span class="pre">generate_random_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#inputs.generators.RandomInputGenerator.generate_random_type" title="Link to this definition">¶</a></dt>
+<dd><p>Generate the random value for specified type.</p>
+<section id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>type<span class="classifier">str</span></dt><dd><p>Type of variable. Example: int, float</p>
+</dd>
+<dt>min<span class="classifier">int</span></dt><dd><p>Minimum value for the variable</p>
+</dd>
+<dt>max<span class="classifier">int</span></dt><dd><p>Maximum value for the variable</p>
+</dd>
+<dt>size<span class="classifier">int</span></dt><dd><p>Number of elements. If is array is &gt; 1, else is == 1</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h4>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>inputs<span class="classifier">list</span></dt><dd><p>Input values for execute in program under analysis</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.generators.RandomInputGenerator.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#inputs.generators.RandomInputGenerator.run" title="Link to this definition">¶</a></dt>
+<dd><p>Create a list with many set of inputs for multiple executions</p>
+<section id="id10">
+<h4>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id11">
+<h4>Returns<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>test_cases_list<span class="classifier">list</span></dt><dd><p>Set of set of input for multiples executions</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-inputs.input_manager">
+<span id="inputs-input-manager-module"></span><h2>inputs.input_manager module<a class="headerlink" href="#module-inputs.input_manager" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="inputs.input_manager.InputManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inputs.input_manager.</span></span><span class="sig-name descname"><span class="pre">InputManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.user_project.UserProject" title="utils.user_project.UserProject"><span class="pre">UserProject</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.html#utils.intermediate_values.IntermediateValues" title="utils.intermediate_values.IntermediateValues"><span class="pre">IntermediateValues</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inputs.input_manager.InputManager" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Create input variables object and control the pipeline to generate input values</p>
+<section id="id12">
+<h3>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>inter_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h3>Attributes<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>inter_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+<dt>input_types<span class="classifier">list</span></dt><dd><p>List with all types of each input. Example: [int(15), float, int]</p>
+</dd>
+<dt>input_bounds_min<span class="classifier">list</span></dt><dd><p>List with all minimum values each input can be. Example: [-7, 0]</p>
+</dd>
+<dt>input_bounds_max<span class="classifier">list</span></dt><dd><p>List with all maximum values each input can be. Example: [-2, 10]</p>
+</dd>
+<dt>test_cases<span class="classifier">int</span></dt><dd><p>Number of test cases to coverage all code</p>
+</dd>
+<dt>cbmc_path<span class="classifier">str</span></dt><dd><p>Directory to executable of CBMC</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.input_manager.InputManager.generate_inputs">
+<span class="sig-name descname"><span class="pre">generate_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span></span></span><a class="headerlink" href="#inputs.input_manager.InputManager.generate_inputs" title="Link to this definition">¶</a></dt>
+<dd><p>Create inputs using selected method</p>
+<section id="id14">
+<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id15">
+<h4>Returns<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>test_cases_list<span class="classifier">set</span></dt><dd><p>Set of set of input for multiples executions</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.input_manager.InputManager.get_variables">
+<span class="sig-name descname"><span class="pre">get_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#inputs.input_manager.InputManager.get_variables" title="Link to this definition">¶</a></dt>
+<dd><p>Create variable object to group all attributes about inputs</p>
+<section id="id16">
+<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id17">
+<h4>Returns<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>variable<span class="classifier">Variable</span></dt><dd><p>Object with all attributes of variable</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.input_manager.InputManager.set_variables">
+<span class="sig-name descname"><span class="pre">set_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#inputs.input_manager.InputManager.set_variables" title="Link to this definition">¶</a></dt>
+<dd><p>Create variable object to group all attributes about inputs</p>
+<section id="id18">
+<h4>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id19">
+<h4>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="inputs.input_manager.Variable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">inputs.input_manager.</span></span><span class="sig-name descname"><span class="pre">Variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inputs.input_manager.Variable" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Organize all attributes of input in one object</p>
+<section id="id20">
+<h3>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>string<span class="classifier">str</span></dt><dd><p>type information and maybe execution number</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h3>Attributes<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>array<span class="classifier">bool</span></dt><dd><p>If is a array or not</p>
+</dd>
+<dt>type<span class="classifier">type</span></dt><dd><p>Type of variable. Example: float, int</p>
+</dd>
+<dt>size<span class="classifier">int</span></dt><dd><p>Number of elements. If is array is &gt; 1, else is == 1</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.input_manager.Variable.check_bounds">
+<span class="sig-name descname"><span class="pre">check_bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#inputs.input_manager.Variable.check_bounds" title="Link to this definition">¶</a></dt>
+<dd><p>Check if types of bounds are the same of input. Raises an error if types are differents</p>
+<section id="id22">
+<h4>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id23">
+<h4>Returns<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.input_manager.Variable.check_type">
+<span class="sig-name descname"><span class="pre">check_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#inputs.input_manager.Variable.check_type" title="Link to this definition">¶</a></dt>
+<dd><p>Check if variable type is numeric, else raises an error</p>
+<section id="id24">
+<h4>Parameters<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id25">
+<h4>Returns<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>is_valid_type<span class="classifier">bool</span></dt><dd><p>Result of check</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="inputs.input_manager.Variable.set_bounds">
+<span class="sig-name descname"><span class="pre">set_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#inputs.input_manager.Variable.set_bounds" title="Link to this definition">¶</a></dt>
+<dd><p>Set bounds minimum and maximum for each variable</p>
+<section id="id26">
+<h4>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>min<span class="classifier">int</span></dt><dd><p>Minimum value for the variable</p>
+</dd>
+<dt>max<span class="classifier">int</span></dt><dd><p>Maximum value for the variable</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h4>Returns<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<span class="target" id="module-inputs"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ga.html" class="btn btn-neutral float-left" title="ga package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="interface_target.html" class="btn btn-neutral float-right" title="interface_target package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

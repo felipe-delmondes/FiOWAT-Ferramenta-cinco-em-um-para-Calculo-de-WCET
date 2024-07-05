@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cfg package &mdash; FiOWAT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/project-template.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/js/copybutton.js?v=26522df0"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="constraint_solver package" href="constraint_solver.html" />
+    <link rel="prev" title="FiOWAT internal packages" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FiOWAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">FiOWAT</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">FiOWAT internal packages</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">cfg package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-cfg.basic_block">cfg.basic_block module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.basic_block.BasicBlock"><code class="docutils literal notranslate"><span class="pre">BasicBlock</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cfg.graph_generator">cfg.graph_generator module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.create_call_graph_in_post_order"><code class="docutils literal notranslate"><span class="pre">create_call_graph_in_post_order()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.create_node_for_callgraph"><code class="docutils literal notranslate"><span class="pre">create_node_for_callgraph()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.define_basic_block_id"><code class="docutils literal notranslate"><span class="pre">define_basic_block_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.define_first_basic_block_id"><code class="docutils literal notranslate"><span class="pre">define_first_basic_block_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.define_next_basic_blocks"><code class="docutils literal notranslate"><span class="pre">define_next_basic_blocks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.graph_generator_post_order"><code class="docutils literal notranslate"><span class="pre">graph_generator_post_order()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.mapping_nodes_and_names"><code class="docutils literal notranslate"><span class="pre">mapping_nodes_and_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.post_order"><code class="docutils literal notranslate"><span class="pre">post_order()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.read_instruction"><code class="docutils literal notranslate"><span class="pre">read_instruction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_generator.update_index_basic_block"><code class="docutils literal notranslate"><span class="pre">update_index_basic_block()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cfg.graph_weight">cfg.graph_weight module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_weight.define_instructions_weight"><code class="docutils literal notranslate"><span class="pre">define_instructions_weight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_weight.update_basic_block_weight_statically"><code class="docutils literal notranslate"><span class="pre">update_basic_block_weight_statically()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.graph_weight.update_weight_by_measurements"><code class="docutils literal notranslate"><span class="pre">update_weight_by_measurements()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cfg.pre_processor">cfg.pre_processor module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.find_function_name"><code class="docutils literal notranslate"><span class="pre">find_function_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.find_loop_content"><code class="docutils literal notranslate"><span class="pre">find_loop_content()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.functions_mapping"><code class="docutils literal notranslate"><span class="pre">functions_mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.loop_analyzer"><code class="docutils literal notranslate"><span class="pre">loop_analyzer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.loop_bounding"><code class="docutils literal notranslate"><span class="pre">loop_bounding()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.loop_mapping"><code class="docutils literal notranslate"><span class="pre">loop_mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.read_file"><code class="docutils literal notranslate"><span class="pre">read_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.read_file_information"><code class="docutils literal notranslate"><span class="pre">read_file_information()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.read_line"><code class="docutils literal notranslate"><span class="pre">read_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.pre_processor.read_scope"><code class="docutils literal notranslate"><span class="pre">read_scope()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cfg.timeMeter">cfg.timeMeter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.timeMeter.TimeMeter"><code class="docutils literal notranslate"><span class="pre">TimeMeter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cfg.timeMeter_aux">cfg.timeMeter_aux module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.timeMeter_aux.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.timeMeter_aux.Mark"><code class="docutils literal notranslate"><span class="pre">Mark</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.timeMeter_aux.Stack"><code class="docutils literal notranslate"><span class="pre">Stack</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.timeMeter_aux.inc_in_dict"><code class="docutils literal notranslate"><span class="pre">inc_in_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.timeMeter_aux.insert_in_dict"><code class="docutils literal notranslate"><span class="pre">insert_in_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfg.timeMeter_aux.system_call"><code class="docutils literal notranslate"><span class="pre">system_call()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="constraint_solver.html">constraint_solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evt.html">evt package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ga.html">ga package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inputs.html">inputs package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface_target.html">interface_target package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipet.html">ipet package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html">pipeline package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FiOWAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">FiOWAT internal packages</a></li>
+      <li class="breadcrumb-item active">cfg package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/cfg.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cfg-package">
+<h1>cfg package<a class="headerlink" href="#cfg-package" title="Link to this heading">¶</a></h1>
+<section id="module-cfg.basic_block">
+<span id="cfg-basic-block-module"></span><h2>cfg.basic_block module<a class="headerlink" href="#module-cfg.basic_block" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cfg.basic_block.</span></span><span class="sig-name descname"><span class="pre">BasicBlock</span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Basic block of Intermediate Representation (IR) Control Flow Graph (CFG).</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>id<span class="classifier">int</span></dt><dd><p>Basic block ID, using IR line as indexer</p>
+</dd>
+<dt>name<span class="classifier">str, default = “”</span></dt><dd><p>Name used by instrumentation pass of opt developed by us</p>
+</dd>
+<dt>weight<span class="classifier">int</span></dt><dd><p>Number of cycles or time for CPU execute this basic block</p>
+</dd>
+<dt>number_executions<span class="classifier">int, default = 0</span></dt><dd><p>Maximum number of times that block is executed in program.</p>
+<p>Some blocks has 0 value by default, this means the exactly number of executions is undefined.</p>
+</dd>
+<dt>instructions<span class="classifier">list, default = []</span></dt><dd><p>List of all instructions in order. These instructions just have the instructions. Example: ret, add, load</p>
+</dd>
+<dt>next_blocks<span class="classifier">list, default = []</span></dt><dd><p>List of all connections to next basic blocks. If list is empty, so it’s a exit block.</p>
+<p>The connections is made using index of same list. Example [1, 5, 12]</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.get_id">
+<span class="sig-name descname"><span class="pre">get_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.get_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.get_instructions">
+<span class="sig-name descname"><span class="pre">get_instructions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.get_instructions" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.get_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.get_next_blocks">
+<span class="sig-name descname"><span class="pre">get_next_blocks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.get_next_blocks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.get_number_executions">
+<span class="sig-name descname"><span class="pre">get_number_executions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.get_number_executions" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.get_weight">
+<span class="sig-name descname"><span class="pre">get_weight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.get_weight" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.set_basic_block">
+<span class="sig-name descname"><span class="pre">set_basic_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_executions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_blocks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.set_basic_block" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.set_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.set_instructions">
+<span class="sig-name descname"><span class="pre">set_instructions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.set_instructions" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.set_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.set_next_blocks">
+<span class="sig-name descname"><span class="pre">set_next_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">next_blocks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.set_next_blocks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.set_number_executions">
+<span class="sig-name descname"><span class="pre">set_number_executions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_executions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.set_number_executions" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.basic_block.BasicBlock.set_weight">
+<span class="sig-name descname"><span class="pre">set_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.basic_block.BasicBlock.set_weight" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-cfg.graph_generator">
+<span id="cfg-graph-generator-module"></span><h2>cfg.graph_generator module<a class="headerlink" href="#module-cfg.graph_generator" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.create_call_graph_in_post_order">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">create_call_graph_in_post_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.graph_generator.create_call_graph_in_post_order" title="Link to this definition">¶</a></dt>
+<dd><p>Read all callgraph functions in dot file to traverse graph using post order algorithm and generate a sequence of functions doesn’t depends other functions.</p>
+<p>Update this attributes of intermediate values:</p>
+<ul>
+<li><dl>
+<dt>function_name_post_order<span class="classifier">list</span></dt><dd><p>List functions name in post order.</p>
+<p>Example: [‘llvm.va_end’, ‘__stdio_common_vfscanf’, …]</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p>create_call_graph()</p></li>
+</ul>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.create_node_for_callgraph">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">create_node_for_callgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.graph_generator.create_node_for_callgraph" title="Link to this definition">¶</a></dt>
+<dd><p>Create node, with all connections to child nodes, expect edges about recursion.</p>
+<p>The code node is found in previous function, so only missing child nodes.</p>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>dot<span class="classifier">list </span></dt><dd><p>All lines of dot file callgraph</p>
+</dd>
+<dt>line<span class="classifier">int</span></dt><dd><p>Current position in dot file</p>
+</dd>
+<dt>nodes<span class="classifier">dict</span></dt><dd><p>Composed by current node and child nodes.</p>
+<p>Example: {‘Node0x1c93e829a50’: [‘Node0x1c93e82a8d0’], ‘Node0x1c93e829ad0’: [‘Node0x1c93e828f50’, ‘Node0x1c93e82a2d0’, ‘Node0x1c93e82ac50’]}</p>
+</dd>
+<dt>current_node<span class="classifier">str</span></dt><dd><p>Code of current node.</p>
+<p>Example: Node0x1c93e82ac50</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.define_basic_block_id">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">define_basic_block_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#cfg.graph_generator.define_basic_block_id" title="Link to this definition">¶</a></dt>
+<dd><p>Return formatted basic block ID from IR line.</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line<span class="classifier">str</span></dt><dd><p>IR line with basic block ID</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>bb_id<span class="classifier">str</span></dt><dd><p>Character and Basic Block ID. Example: 23 or “main;01”</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.define_first_basic_block_id">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">define_first_basic_block_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#cfg.graph_generator.define_first_basic_block_id" title="Link to this definition">¶</a></dt>
+<dd><p>Find the first basic block ID, because it’s different of other blocks.</p>
+<p>It hasn’t separated line like: “23: “.</p>
+<p>To discover its value, is necessary count number of parameters declarations and plus one.</p>
+<p>One exception is IR file generated by us pass. In this situation there is next line with basic block name.</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>function_line<span class="classifier">str</span></dt><dd><p>One line of function declaration.</p>
+<p>Example: define dso_local i32 &#64;main(i32 noundef %0, ptr noundef %1) #0 !dbg !195 {</p>
+</dd>
+<dt>next_line<span class="classifier">str</span></dt><dd><p>Content of IR line. Because IR file process by us pass generate extra line with name of first basic block.</p>
+<p>Example of name is Fib_01. In original IR file generate by “canonical” LLVM there aren’t this line.</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h3>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>bb_id<span class="classifier">str</span></dt><dd><p>Basic block ID formatted. Example: 3 or Fib_01</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.define_next_basic_blocks">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">define_next_basic_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#cfg.graph_generator.define_next_basic_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>Find basic block ID in terminator of current basic block.</p>
+<p>Examples: br label %16, !dbg !219, !llvm.loop !220  —  br i1 %18, label %19, label %33, !dbg !212</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line<span class="classifier">str, default = ‘’</span></dt><dd><p>Last line of current basic block. If hasn’t line, it means this basic block is exit point</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>next_blocks<span class="classifier">list</span></dt><dd><p>All next basic block IDs connections with current basic block. It includes empty list</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.graph_generator_post_order">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">graph_generator_post_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.graph_generator.graph_generator_post_order" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a graph in a list in post order, each list has basic block in same order of “.ll file”.</p>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p>create_ir()</p></li>
+<li><p>create_call_graph()</p></li>
+<li><p>loop_mapping()</p></li>
+<li><p>loop_bounding()</p></li>
+<li><p>functions_mapping()</p></li>
+<li><p>create_call_graph_in_post_order()</p></li>
+</ul>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+<dt>graph<span class="classifier">dict</span></dt><dd><p>Basic block graph of all program</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h3>Returns<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.mapping_nodes_and_names">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">mapping_nodes_and_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_and_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_entry_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#cfg.graph_generator.mapping_nodes_and_names" title="Link to this definition">¶</a></dt>
+<dd><p>Create a pair between function name and nodes</p>
+<section id="id12">
+<h3>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>line<span class="classifier">str</span></dt><dd><p>Line contains node code and name function of dot file.</p>
+<p>Example: ”       Node0x1c93e82a2d0 [shape=record,label=”{_vsprintf_l}”];”</p>
+</dd>
+<dt>node_and_names<span class="classifier">dict</span></dt><dd><p>Mapping all code nodes and all functions name of dot file.</p>
+<p>Example: {‘Node0x1c93e829a50’: ‘vsprintf’, ‘Node0x1c93e829ad0’: ‘sprintf’, ‘Node0x1c93e8296d0’: ‘_snprintf’, ‘Node0x1c93e82ac50’: ‘llvm.va_end’}</p>
+</dd>
+<dt>node_entry_point<span class="classifier">list</span></dt><dd><p>Save one code node about program entry point, usually “main function”.</p>
+<p>Example: [‘Node0x1c93e82a950’]</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h3>Returns<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>node<span class="classifier">str</span></dt><dd><p>Code node of current node. For example, if this line contain this code: Node0x1c93e82a2d0, so return the same code.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.post_order">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">post_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_entry_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_and_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.graph_generator.post_order" title="Link to this definition">¶</a></dt>
+<dd><p>Traverse graph in post order, this way It’s possible to find functions that do not call other uncalculated functions.</p>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>node_entry_point<span class="classifier">list</span></dt><dd><p>This callgraph doesn’t have a entry point clearly defined, so it’s necessary define the initial node.
+Usually is “main function”.</p>
+<p>Example: [‘Node0x1c93e82a950’]</p>
+</dd>
+<dt>nodes<span class="classifier">dict</span></dt><dd><p>All nodes and its child nodes.</p>
+<p>Example: {‘Node0x1c93e829a50’: [‘Node0x1c93e82a8d0’], ‘Node0x1c93e829ad0’: [‘Node0x1c93e828f50’, ‘Node0x1c93e82a2d0’, ‘Node0x1c93e82ac50’]}</p>
+</dd>
+<dt>node_and_names<span class="classifier">dict</span></dt><dd><p>Maintain relationship between node codes and functions name.</p>
+<p>Example: {‘Node0x1c93e829a50’: ‘vsprintf’, ‘Node0x1c93e829ad0’: ‘sprintf’}</p>
+</dd>
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.read_instruction">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">read_instruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#cfg.graph_generator.read_instruction" title="Link to this definition">¶</a></dt>
+<dd><p>Read IR line and identify its instrunction. Example: add, load, call, ret</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line<span class="classifier">str</span></dt><dd><p>One IR line from within basic block</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>command<span class="classifier">str</span></dt><dd><p>Final instruction in one word. If is “call instruction”, so return two words: call instruction + function name</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_generator.update_index_basic_block">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_generator.</span></span><span class="sig-name descname"><span class="pre">update_index_basic_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping_bb_id_and_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.graph_generator.update_index_basic_block" title="Link to this definition">¶</a></dt>
+<dd><p>Convert from “LLVM format Basic Block ID” to “Index Position” in function list.</p>
+<p>Example: ‘%23’ -&gt; 5</p>
+<section id="id18">
+<h3>Parameters<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>function<span class="classifier">list</span></dt><dd><p>Function with all basic blocks with attribute “next_blocks” instantied</p>
+</dd>
+<dt>mapping_bb_id_and_index<span class="classifier">dict</span></dt><dd><p>Pair between “LLVM format Basic Block ID” and “Index Position” of function array</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h3>Returns<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-cfg.graph_weight">
+<span id="cfg-graph-weight-module"></span><h2>cfg.graph_weight module<a class="headerlink" href="#module-cfg.graph_weight" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_weight.define_instructions_weight">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_weight.</span></span><span class="sig-name descname"><span class="pre">define_instructions_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#cfg.graph_weight.define_instructions_weight" title="Link to this definition">¶</a></dt>
+<dd><p>Return instructions weight of selected architecture, without using pipeline, cache or branch predictor effects.</p>
+<p>If there aren’t an architecture, so default value is used.</p>
+<p>Architetures supported:</p>
+<ul class="simple">
+<li><p>avr</p></li>
+<li><p>x86 | x86_64</p></li>
+<li><p>default</p></li>
+</ul>
+<p>Note: the instructions: “call llvm.dbg.declare”; “call llvm.dbg.value” and “call llvm.dbg.assign” have 0 weight.</p>
+<p>This instruction is used by LLVM to obtain debug information. See more information in this site: <a class="reference external" href="https://llvm.org/docs/SourceLevelDebugging.html#llvm-dbg-declare">https://llvm.org/docs/SourceLevelDebugging.html#llvm-dbg-declare</a></p>
+<section id="id20">
+<h3>Parameters<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain information about architecture, like avr or x86</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h3>Returns<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>instructions_weight<span class="classifier">dict</span></dt><dd><p>Pair between instruction name and weights (Cycles per Instruction)</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_weight.update_basic_block_weight_statically">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_weight.</span></span><span class="sig-name descname"><span class="pre">update_basic_block_weight_statically</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructions_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.graph_weight.update_basic_block_weight_statically" title="Link to this definition">¶</a></dt>
+<dd><p>Determine basic block weight by sum of individual instruction weight.</p>
+<p>It’s impossible determine all functions weight because “call instructions” has weight undefined at the beginning of the analysis</p>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>function<span class="classifier">list</span></dt><dd><p>All basic blocks of function</p>
+</dd>
+<dt>instructions_weight<span class="classifier">dict</span></dt><dd><p>Weight of each instructions (Cycles per Instruction)</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h3>Returns<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.graph_weight.update_weight_by_measurements">
+<span class="sig-prename descclassname"><span class="pre">cfg.graph_weight.</span></span><span class="sig-name descname"><span class="pre">update_weight_by_measurements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.graph_weight.update_weight_by_measurements" title="Link to this definition">¶</a></dt>
+<dd><p>Update basic block weight using values obtained by measurements</p>
+<section id="id24">
+<h3>Parameters<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>graph<span class="classifier">dict</span></dt><dd><p>All basic blocks of program</p>
+</dd>
+<dt>timer<span class="classifier">Dict</span></dt><dd><p>Dictonary gerenated by measuring the execution time of basic blocks</p>
+</dd>
+<dt>main: Bool, default=True</dt><dd><p>Define if the blocks of the main function will have their weight updated or not. If not, the value stays zero.
+True means to consider main.</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h3>Returns<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-cfg.pre_processor">
+<span id="cfg-pre-processor-module"></span><h2>cfg.pre_processor module<a class="headerlink" href="#module-cfg.pre_processor" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.find_function_name">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">find_function_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#cfg.pre_processor.find_function_name" title="Link to this definition">¶</a></dt>
+<dd><p>Find function name.</p>
+<section id="id26">
+<h3>Parameters<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line_content<span class="classifier">str</span></dt><dd><p>Line under analysis. Example: define dso_local i32 &#64;calculadora() #0 !dbg !45 {</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h3>Returns<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>function_name<span class="classifier">str</span></dt><dd><p>Name of function. Example: printf</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.find_loop_content">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">find_loop_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.pre_processor.find_loop_content" title="Link to this definition">¶</a></dt>
+<dd><p>Find where is loop information in debug table.</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line_content<span class="classifier">str</span></dt><dd><p>Line under analysis. Example: !184 = distinct !{!184, !177, !185, !186}</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Returns<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>index_loop_information_in_debug_table<span class="classifier">int</span></dt><dd><p>Code where find loop information in debug table. Example: 177</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.functions_mapping">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">functions_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.pre_processor.functions_mapping" title="Link to this definition">¶</a></dt>
+<dd><p>Find all lines about functions name in “.ll file” and storage its lines.</p>
+<p>Also, categorize “important functions” -&gt; Functions with instructions.</p>
+<p>And “void functions” -&gt; Function without instructions.</p>
+<p>Update this attributes of intermediate values:</p>
+<ul>
+<li><dl>
+<dt>mapping_important_functions_lines<span class="classifier">dict</span></dt><dd><p>Relationship between functions name and IR line.</p>
+<p>Example: {‘sprintf’: 46}</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>mapping_void_functions_lines<span class="classifier">dict</span></dt><dd><p>Relationship between functions name and IR line.</p>
+<p>Example: {‘rand’: 112}</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p>create_ir()</p></li>
+</ul>
+<section id="id30">
+<h3>Parameters<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h3>Returns<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.loop_analyzer">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">loop_analyzer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.pre_processor.loop_analyzer" title="Link to this definition">¶</a></dt>
+<dd><p>Try find loop bound of loop in source code</p>
+<section id="id32">
+<h3>Parameters<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>filename<span class="classifier">str</span></dt><dd><p>Name of current filename under analysys. Example: quatum.c</p>
+</dd>
+<dt>line<span class="classifier">str</span></dt><dd><p>Current line under analysis. Example: ”    for(i = 0; i &lt; 100; i++){”</p>
+</dd>
+<dt>line_number<span class="classifier">int</span></dt><dd><p>Number of line in source code file. Example: 12</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h3>Returns<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>bound<span class="classifier">int</span></dt><dd><p>The maximum value of loop bound. Example: 30</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.loop_bounding">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">loop_bounding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.pre_processor.loop_bounding" title="Link to this definition">¶</a></dt>
+<dd><p>Read source code and obtain the loop bound in annotation and correlate with IR line of .ll file.</p>
+<p>Update this attributes of intermediate values:</p>
+<ul>
+<li><dl>
+<dt>mapping_loop_bound<span class="classifier">dict </span></dt><dd><p>Relationship between line in IR code and loop bound.</p>
+<p>Example: {273: 50, 294: 10, 354: 20}</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p>create_ir()</p></li>
+<li><p>loop_mapping()</p></li>
+</ul>
+<section id="id34">
+<h3>Parameters<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="id35">
+<h3>Returns<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.loop_mapping">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">loop_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intermediate_values</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.pre_processor.loop_mapping" title="Link to this definition">¶</a></dt>
+<dd><p>Search all the correspondences loops in IR with loops in source code.</p>
+<p>Additional function is find which line begin debug table in .ll file.</p>
+<p>Update this attributes of intermediate values:</p>
+<ul>
+<li><dl>
+<dt>all_user_project_files<span class="classifier">dict</span></dt><dd><p>Information about user files and its IR metadata.</p>
+<p>Example: {‘index_filename’: 2, ‘filename’: ‘Desktop\wcet_project\header_file.h’, ‘directory’: ‘C:UsersMarcus', ‘checksum’: ‘7bdd5928b1f3a6c967a6ea18142b9bc3’}</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>mapping_loop_lines<span class="classifier">dict</span></dt><dd><p>Relationship between user file and loop IR line.</p>
+<p>Example: {‘index_filename’: 14, ‘line_source_code’: 14, ‘index_ir’: 185, ‘line_ir_code’: 273}</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p>create_ir()</p></li>
+</ul>
+<section id="id36">
+<h3>Parameters<a class="headerlink" href="#id36" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>intermediate_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+</dl>
+</section>
+<section id="id37">
+<h3>Returns<a class="headerlink" href="#id37" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.read_file">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.pre_processor.read_file" title="Link to this definition">¶</a></dt>
+<dd><p>Read line information in debug table and find file of loop.</p>
+<section id="id38">
+<h3>Parameters<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line_content<span class="classifier">str</span></dt><dd><p>Line under analysis. Example: !178 = distinct !DILexicalBlock(scope: !179, file: !14, line: 13)</p>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h3>Returns<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>index_filename<span class="classifier">int</span></dt><dd><p>Line with information about file of loop.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.read_file_information">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">read_file_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#cfg.pre_processor.read_file_information" title="Link to this definition">¶</a></dt>
+<dd><p>Read all the information about source code developed by programmers.</p>
+<section id="id40">
+<h3>Parameters<a class="headerlink" href="#id40" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>count<span class="classifier">int</span></dt><dd><p>Index number, for example: 13 =&gt; !13 in debug table of .ll file</p>
+</dd>
+<dt>line: string</dt><dd><p>Informations about one file</p>
+</dd>
+</dl>
+</section>
+<section id="id41">
+<h3>Returns<a class="headerlink" href="#id41" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>all_user_project_files<span class="classifier">dict</span></dt><dd><p>Dictionary store all information about information user files indexed.</p>
+<p>Example: {‘index_filename’: 2, ‘filename’: ‘Desktop\wcet_project\header_file.h’, ‘directory’: ‘C:UsersMarcus', ‘checksum’: ‘7bdd5928b1f3a6c967a6ea18142b9bc3’}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.read_line">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">read_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.pre_processor.read_line" title="Link to this definition">¶</a></dt>
+<dd><p>Read line information in debug table and find source code line of loop.</p>
+<section id="id42">
+<h3>Parameters<a class="headerlink" href="#id42" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line_content<span class="classifier">str</span></dt><dd><p>Line under analysis. Example: !177 = !DILocation(line: 14, scope: !178)</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h3>Returns<a class="headerlink" href="#id43" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line_source_code<span class="classifier">int</span></dt><dd><p>Line with information about which line in source code has init of loop.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.pre_processor.read_scope">
+<span class="sig-prename descclassname"><span class="pre">cfg.pre_processor.</span></span><span class="sig-name descname"><span class="pre">read_scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#cfg.pre_processor.read_scope" title="Link to this definition">¶</a></dt>
+<dd><p>Read line information in debug table and find scope of loop.</p>
+<section id="id44">
+<h3>Parameters<a class="headerlink" href="#id44" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>line_content<span class="classifier">str</span></dt><dd><p>Line under analysis. Example: !177 = !DILocation(line: 14, scope: !178)</p>
+</dd>
+</dl>
+</section>
+<section id="id45">
+<h3>Returns<a class="headerlink" href="#id45" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>pointer_to_filename<span class="classifier">int</span></dt><dd><p>Line with information about scope of loop, to look up in debug table.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-cfg.timeMeter">
+<span id="cfg-timemeter-module"></span><h2>cfg.timeMeter module<a class="headerlink" href="#module-cfg.timeMeter" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cfg.timeMeter.TimeMeter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cfg.timeMeter.</span></span><span class="sig-name descname"><span class="pre">TimeMeter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cfg.timeMeter.TimeMeter" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to obtain the execution time of the basic blocks of a program.
+Responsible for running the instrumented executable using an InterfaceTarget object 
+and extracting times from the execution output.</p>
+<section id="id46">
+<h3>Parameters<a class="headerlink" href="#id46" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>inter_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+<dt>interface_target<span class="classifier">InterfaceTarget</span></dt><dd><p>Coordenates the communication with the target hardware.</p>
+</dd>
+</dl>
+</section>
+<section id="id47">
+<h3>Attributes<a class="headerlink" href="#id47" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>project<span class="classifier">UserProject</span></dt><dd><p>Contain all information about project</p>
+</dd>
+<dt>inter_values<span class="classifier">IntermediateValues</span></dt><dd><p>All intermediate information obtained by pre processing</p>
+</dd>
+<dt>interface_target<span class="classifier">InterfaceTarget</span></dt><dd><p>Coordenates the communication with the target hardware.</p>
+</dd>
+<dt>partial_times<span class="classifier">dict of dict</span></dt><dd><p>Basic block times for each function in the program. Used
+to store values after each run.</p>
+</dd>
+<dt>final_times<span class="classifier">dict of dict</span></dt><dd><p>Basic block times for each function in the program. Used
+to integrate the results obtained after each run.</p>
+</dd>
+<dt>output<span class="classifier">str</span></dt><dd><p>The execution output returned by InterfaceTarget run method.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter.TimeMeter.extract_times">
+<span class="sig-name descname"><span class="pre">extract_times</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfg.timeMeter.TimeMeter.extract_times" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts basic block times from the execution output of an instrumented program.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter.TimeMeter.integrate_times">
+<span class="sig-name descname"><span class="pre">integrate_times</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfg.timeMeter.TimeMeter.integrate_times" title="Link to this definition">¶</a></dt>
+<dd><p>Integrates partial execution times into the dictionary with final times.</p>
+<p>The integration takes the two values for a given block and 
+choose the higher one to stay in the final dictionary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter.TimeMeter.run_test_cases">
+<span class="sig-name descname"><span class="pre">run_test_cases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfg.timeMeter.TimeMeter.run_test_cases" title="Link to this definition">¶</a></dt>
+<dd><p>Calls the InterfaceTarget object to execute the underlying program.
+In each call, passes a test case from IntermediateValues as input arguments.
+After each call, extracts basic block times and integrates them in the final times dictionary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter.TimeMeter.save_times">
+<span class="sig-name descname"><span class="pre">save_times</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfg.timeMeter.TimeMeter.save_times" title="Link to this definition">¶</a></dt>
+<dd><p>Saves the dictionary with basic block times to a JSON file.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-cfg.timeMeter_aux">
+<span id="cfg-timemeter-aux-module"></span><h2>cfg.timeMeter_aux module<a class="headerlink" href="#module-cfg.timeMeter_aux" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.Context">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cfg.timeMeter_aux.</span></span><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">last_mark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cfg.timeMeter_aux.Context" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Save the current context of communication, to trace the call graph of function and know how cycles spend each basic block</p>
+<section id="id48">
+<h3>Parameters<a class="headerlink" href="#id48" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>last_mark<span class="classifier">str</span></dt><dd><p>Last mark outputted. Example: #;_vfscanf_l;block0</p>
+</dd>
+<dt>block_time<span class="classifier">int</span></dt><dd><p>Number of cycles in that time</p>
+</dd>
+</dl>
+</section>
+<section id="id49">
+<h3>Attributes<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>last_mark<span class="classifier">str</span></dt><dd><p>Last mark outputted. Example: #;_vfscanf_l;block0</p>
+</dd>
+<dt>block_time<span class="classifier">int</span></dt><dd><p>Number of cycles in that time</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.Context.inc_block_time">
+<span class="sig-name descname"><span class="pre">inc_block_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.timeMeter_aux.Context.inc_block_time" title="Link to this definition">¶</a></dt>
+<dd><p>Update total number of cycles spend at time by the program</p>
+<section id="id50">
+<h4>Parameters<a class="headerlink" href="#id50" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>time<span class="classifier">int</span></dt><dd><p>Increment the number of cycles spend at time by the program</p>
+</dd>
+</dl>
+</section>
+<section id="id51">
+<h4>Returns<a class="headerlink" href="#id51" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.Context.update_last_mark">
+<span class="sig-name descname"><span class="pre">update_last_mark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.timeMeter_aux.Context.update_last_mark" title="Link to this definition">¶</a></dt>
+<dd><p>Update the last mark outputted</p>
+<section id="id52">
+<h4>Parameters<a class="headerlink" href="#id52" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>last_mark<span class="classifier">str</span></dt><dd><p>Last mark outputted. Example: #;_vfscanf_l;block0</p>
+</dd>
+</dl>
+</section>
+<section id="id53">
+<h4>Returns<a class="headerlink" href="#id53" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.Mark">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cfg.timeMeter_aux.</span></span><span class="sig-name descname"><span class="pre">Mark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mark</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cfg.timeMeter_aux.Mark" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Process the output of board or simulator. Example of output: #;_vfscanf_l;block0</p>
+<section id="id54">
+<h3>Parameters<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>mark<span class="classifier">str</span></dt><dd><p>Output of board/simulator. Example of output: #;_vfscanf_l;block0</p>
+</dd>
+</dl>
+</section>
+<section id="id55">
+<h3>Attributes<a class="headerlink" href="#id55" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>func<span class="classifier">str</span></dt><dd><p>Function name. Example: _vfscanf_l</p>
+</dd>
+<dt>block<span class="classifier">str</span></dt><dd><p>Basic block. Example: block0</p>
+</dd>
+<dt>time<span class="classifier">int</span></dt><dd><p>Number of cycles of respective basic block</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.Stack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cfg.timeMeter_aux.</span></span><span class="sig-name descname"><span class="pre">Stack</span></span><a class="headerlink" href="#cfg.timeMeter_aux.Stack" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Create match between basic blocks, to avoid count call functions</p>
+<section id="id56">
+<h3>Parameters<a class="headerlink" href="#id56" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="id57">
+<h3>Attributes<a class="headerlink" href="#id57" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>stack_frames<span class="classifier">list</span></dt><dd><p>Stack of basic blocks called</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.Stack.pop_if_matches">
+<span class="sig-name descname"><span class="pre">pop_if_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#cfg.timeMeter_aux.Stack.pop_if_matches" title="Link to this definition">¶</a></dt>
+<dd><p>Remove the basic block of stack if match with other basic block</p>
+<section id="id58">
+<h4>Parameters<a class="headerlink" href="#id58" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Basic block name</p>
+</dd>
+</dl>
+</section>
+<section id="id59">
+<h4>Returns<a class="headerlink" href="#id59" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>stack_frames<span class="classifier">list</span></dt><dd><p>Stack updated</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.Stack.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.timeMeter_aux.Stack.push" title="Link to this definition">¶</a></dt>
+<dd><p>Push one basic block on stack</p>
+<section id="id60">
+<h4>Parameters<a class="headerlink" href="#id60" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>ctx<span class="classifier">str</span></dt><dd><p>Basic block name</p>
+</dd>
+</dl>
+</section>
+<section id="id61">
+<h4>Returns<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h4>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.inc_in_dict">
+<span class="sig-prename descclassname"><span class="pre">cfg.timeMeter_aux.</span></span><span class="sig-name descname"><span class="pre">inc_in_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.timeMeter_aux.inc_in_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Increment the execution time of a block in the dictionary.</p>
+<section id="id62">
+<h3>Parameters<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>times<span class="classifier">dict</span></dt><dd><p>The dictionary to store block times.</p>
+</dd>
+<dt>func_name<span class="classifier">str</span></dt><dd><p>Name of the function which the block belong.</p>
+</dd>
+<dt>block<span class="classifier">str</span></dt><dd><p>Name of the block.</p>
+</dd>
+<dt>time<span class="classifier">int</span></dt><dd><p>Execution time to be incremented in block time.</p>
+</dd>
+</dl>
+</section>
+<section id="id63">
+<h3>Returns<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.insert_in_dict">
+<span class="sig-prename descclassname"><span class="pre">cfg.timeMeter_aux.</span></span><span class="sig-name descname"><span class="pre">insert_in_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.timeMeter_aux.insert_in_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Stores the execution time of a block in the dictionary.</p>
+<section id="id64">
+<h3>Parameters<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>times<span class="classifier">dict</span></dt><dd><p>The dictionary to store block times.</p>
+</dd>
+<dt>func_name<span class="classifier">str</span></dt><dd><p>Name of the function which the block belong.</p>
+</dd>
+<dt>block<span class="classifier">str</span></dt><dd><p>Name of the block.</p>
+</dd>
+<dt>time<span class="classifier">int</span></dt><dd><p>Execution time to be inserted.</p>
+</dd>
+</dl>
+</section>
+<section id="id65">
+<h3>Returns<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cfg.timeMeter_aux.system_call">
+<span class="sig-prename descclassname"><span class="pre">cfg.timeMeter_aux.</span></span><span class="sig-name descname"><span class="pre">system_call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#cfg.timeMeter_aux.system_call" title="Link to this definition">¶</a></dt>
+<dd><p>Execute command like a system call</p>
+<section id="id66">
+<h3>Parameters<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>cmd<span class="classifier">str</span></dt><dd><p>Command to run in shell</p>
+</dd>
+</dl>
+</section>
+<section id="id67">
+<h3>Returns<a class="headerlink" href="#id67" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<span class="target" id="module-cfg"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="FiOWAT internal packages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="constraint_solver.html" class="btn btn-neutral float-right" title="constraint_solver package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
